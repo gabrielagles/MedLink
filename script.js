@@ -1,4 +1,4 @@
-// --- script.js para o site CliniTech ---
+// --- script.js para o site CliniTech (FINAL) ---
 
 document.addEventListener('DOMContentLoaded', function() {
     // VARIÁVEIS COMUNS
@@ -9,6 +9,109 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnAgendar = document.querySelector('.secao.inicio .botao-agendar');
     const spanFechar = document.getElementsByClassName("fechar-modal")[0];
     const horarioContainer = document.querySelector('.horarios');
+    
+    // VARIÁVEIS DO CALENDÁRIO
+    const diasMesContainer = document.getElementById('dias-mes-container');
+    const mesAnoDisplay = document.getElementById('mes-ano-display');
+    const prevMesBtn = document.getElementById('prev-mes');
+    const nextMesBtn = document.getElementById('next-mes');
+    const nomesMeses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    
+    // Inicia a data no mês atual para navegação (Ou use um mês fixo como 2025, 9 (Outubro) para demonstração)
+    let dataAtualCalendario = new Date(2025, 9, 1); 
+
+    // FUNÇÕES DO CALENDÁRIO
+    function getDaysInMonth(year, month) {
+        // Retorna o número de dias no mês
+        return new Date(year, month + 1, 0).getDate();
+    }
+
+    function gerarCalendario() {
+        if (!diasMesContainer || !mesAnoDisplay) return;
+
+        const ano = dataAtualCalendario.getFullYear();
+        const mes = dataAtualCalendario.getMonth();
+        const primeiroDiaSemana = dataAtualCalendario.getDay(); // 0 = Dom, 6 = Sáb
+        const diasNoMes = getDaysInMonth(ano, mes);
+        
+        // Limites de Agendamento
+        const dataMinima = new Date(); // Mês atual
+        dataMinima.setDate(1); 
+        const limiteAno = 2028; 
+        const limiteMes = 11; // Dezembro 2028
+        let dataLimite = new Date(limiteAno, limiteMes, getDaysInMonth(limiteAno, limiteMes));
+        
+        // Atualiza a exibição do Mês/Ano
+        mesAnoDisplay.textContent = `${nomesMeses[mes]} ${ano}`;
+        
+        // Habilita/Desabilita setas com base nos limites
+        prevMesBtn.style.visibility = (dataAtualCalendario.getTime() <= dataMinima.getTime()) ? 'hidden' : 'visible';
+        nextMesBtn.style.visibility = (dataAtualCalendario.getTime() >= dataLimite.getTime()) ? 'hidden' : 'visible';
+
+        let htmlDias = '';
+        
+        // 1. Cria espaços vazios (dias do mês anterior)
+        for (let i = 0; i < primeiroDiaSemana; i++) {
+            htmlDias += `<span class="dia-inativo"></span>`;
+        }
+
+        // 2. Cria os dias do mês
+        for (let dia = 1; dia <= diasNoMes; dia++) {
+            let classe = 'dia';
+            let dataDia = new Date(ano, mes, dia);
+
+            // Verifica se o dia é anterior ao dia de hoje (apenas para o mês atual)
+            if (dataDia.getTime() < new Date().setHours(0,0,0,0)) {
+                classe += ' dia-inativo';
+            } else if (dia === 7 && mes === 9 && ano === 2025) {
+                // Seleção inicial de demonstração (Dia 7 de Outubro 2025)
+                classe += ' dia-selecionado';
+            } else {
+                classe += ' dia-disponivel';
+            }
+            
+            htmlDias += `<span class="${classe}" data-dia="${dia}">${dia}</span>`;
+        }
+
+        diasMesContainer.innerHTML = htmlDias;
+    }
+    
+    // LÓGICA DE NAVEGAÇÃO DE MÊS
+    if (prevMesBtn && nextMesBtn) {
+        prevMesBtn.addEventListener('click', () => {
+            dataAtualCalendario.setMonth(dataAtualCalendario.getMonth() - 1);
+            gerarCalendario();
+        });
+
+        nextMesBtn.addEventListener('click', () => {
+            dataAtualCalendario.setMonth(dataAtualCalendario.getMonth() + 1);
+            gerarCalendario();
+        });
+    }
+
+    // LÓGICA DE SELEÇÃO DE DIA NO CALENDÁRIO 📅
+    if (diasMesContainer) {
+        diasMesContainer.addEventListener('click', function(e) {
+            const clickedDay = e.target;
+            
+            // Verifica se é um dia disponível
+            if (clickedDay.classList.contains('dia-disponivel')) {
+                // 1. Remove a seleção de todos os dias
+                const allDays = diasMesContainer.querySelectorAll('.dia');
+                allDays.forEach(day => {
+                    day.classList.remove('dia-selecionado');
+                    // Garante que só os disponíveis possam ser clicados
+                    if (!day.classList.contains('dia-inativo')) {
+                        day.classList.add('dia-disponivel');
+                    }
+                });
+                
+                // 2. Adiciona a seleção ao dia clicado
+                clickedDay.classList.remove('dia-disponivel');
+                clickedDay.classList.add('dia-selecionado');
+            }
+        });
+    }
 
     // 1. Funcionalidade do Menu Hamburger (Mobile)
     if (menuToggle && navbar && navLinks) {
@@ -16,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.classList.toggle('active');
             menuToggle.classList.toggle('active');
         });
-
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function() {
                 setTimeout(() => {
@@ -27,33 +129,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // FUNÇÃO DE GERAÇÃO DE CALENDÁRIO SIMULADO (Simula o avanço de anos)
-    function gerarCalendarioSimulado(anoFinal) {
-        const dataAtual = new Date();
-        const anoAtual = dataAtual.getFullYear();
-        const tituloModal = document.querySelector('#agendamento-modal h3');
-
-        // Atualiza o título do modal para simular a disponibilidade futura
-        if (tituloModal) {
-            tituloModal.textContent = `Agendamento de Consulta (Disponível até ${anoFinal})`;
-        }
-        
-        // Mantém a visualização do calendário estática em Outubro 2025 (como na imagem)
-        // A complexidade de renderizar meses completos é ignorada, mantendo o visual simples para a apresentação.
-    }
-    
     // 2. Funcionalidade do Modal de Agendamento
     if (btnAgendar && modal && spanFechar) {
         btnAgendar.onclick = function() {
+            // Define o calendário para Outubro 2025 ao abrir (mês inicial da demonstração)
+            dataAtualCalendario = new Date(2025, 9, 1); 
+            gerarCalendario(); 
             modal.style.display = "block";
-            // Chama a função para simular a disponibilidade até 2028
-            gerarCalendarioSimulado(2028); 
         }
-
         spanFechar.onclick = function() {
             modal.style.display = "none";
         }
-
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -61,24 +147,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 3. Funcionalidade de Seleção de Horário (Mudar Cor do Botão) 🎨
+    // 3. Funcionalidade de Seleção de Horário (Mudar Cor do Botão) 
     if (horarioContainer) {
         horarioContainer.addEventListener('click', function(e) {
             const clickedButton = e.target;
             
-            // Verifica se o elemento clicado é um botão de horário.
-            // É crucial que todos os botões de horário no HTML tenham a classe 'horario-btn'.
             if (clickedButton.tagName === 'BUTTON' && clickedButton.parentElement === horarioContainer) {
                 
-                // 1. Remove a classe de seleção de todos os botões no contêiner
+                // 1. Remove a classe de seleção de todos os botões de horário
                 const allButtons = horarioContainer.querySelectorAll('button');
                 allButtons.forEach(btn => {
                     btn.classList.remove('hora-selecionada');
-                    // Garante que o estado 'disponível' seja o padrão não-selecionado
+                    // Assume que todos os botões são disponíveis se não estiverem selecionados
                     btn.classList.add('hora-disponivel'); 
                 });
 
-                // 2. Adiciona a classe de seleção (muda a cor) ao botão clicado
+                // 2. Adiciona a classe de seleção (muda a cor azul) ao botão clicado
                 clickedButton.classList.remove('hora-disponivel');
                 clickedButton.classList.add('hora-selecionada');
             }
@@ -91,25 +175,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.getAttribute('href') === '#login' || this.getAttribute('href') === '#cadastro') {
                 return;
             }
-
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-
             if (targetElement) {
                 const headerHeight = document.querySelector('header').offsetHeight;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
+                const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
             }
         });
     });
     
-    // Executa a função inicial para configurar a simulação de ano
-    gerarCalendarioSimulado(2028);
 });

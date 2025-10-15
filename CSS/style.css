@@ -99,17 +99,17 @@ header {
 .secao {
     padding: 80px 40px;
     text-align: center;
-    min-height: 70vh; /* Garante que as seções tenham uma altura mínima */
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 100px; /* Evita que o conteúdo fique atrás do header fixo */
+    padding-top: 100px;
 }
 
 .secao h2 {
     font-size: 2.5rem;
-    color: #00acc1; /* Uma variação do ciano para títulos */
+    color: #00acc1;
     margin-bottom: 20px;
     position: relative;
     padding-bottom: 10px;
@@ -137,7 +137,7 @@ header {
 
 /* --- Estilização da Seção Inicial (.inicio) --- */
 .inicio {
-    background: linear-gradient(135deg, #00bcd4, #00acc1); /* Gradiente luxuoso */
+    background: linear-gradient(135deg, #00bcd4, #00acc1);
     color: white;
     padding-bottom: 80px;
 }
@@ -200,11 +200,11 @@ header {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    flex: 1 1 300px; /* Permite que os cards cresçam, mas com base de 300px */
+    flex: 1 1 300px;
     max-width: 350px;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 5px solid #00bcd4; /* Detalhe de luxo */
+    border-top: 5px solid #00bcd4;
 }
 
 .servicos .card:hover {
@@ -225,9 +225,110 @@ header {
     font-size: 1rem;
 }
 
+/* --- Estilização da Seção Tecnologia (.tecnologia) --- */
+.tecnologia {
+    background-color: #f0faff;
+}
+
+.cards-tecnologia {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    max-width: 1200px;
+}
+
+.card-tech {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    flex: 1 1 300px;
+    max-width: 350px;
+    text-align: left;
+    transition: transform 0.3s ease;
+    border-left: 5px solid #00bcd4;
+}
+
+.card-tech h3 {
+    color: #00acc1;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card-tech p {
+    color: #666;
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+/* --- Estilização da Seção Especialistas (.especialistas) --- */
+.especialistas {
+    background-color: #f8f8f8;
+}
+
+.cards-especialistas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    max-width: 1200px;
+}
+
+.card-especialista {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.card-especialista:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-especialista img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid #00bcd4;
+    box-shadow: 0 0 0 5px rgba(0, 188, 212, 0.1);
+}
+
+.card-especialista h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.card-especialista .especialidade {
+    color: #00bcd4;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.card-especialista .crm {
+    display: block;
+    color: #999;
+    font-size: 0.9rem;
+}
+
 /* --- Estilização da Seção Contato (.contato) --- */
 .contato {
-    background-color: #f0faff; /* Ciano bem claro */
+    background-color: #f0faff;
 }
 
 .contato form {
@@ -281,6 +382,7 @@ header {
     background-color: #00acc1;
 }
 
+/* --- Estilização do Footer --- */
 footer {
     background-color: #00acc1; 
     color: white;
@@ -294,85 +396,42 @@ footer p {
     margin: 0;
 }
 
-.especialistas {
-    background-color: #f8f8f8; /* Fundo cinza claro para destacar do branco */
-}
-
-.cards-especialistas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    margin-bottom: 40px;
-    max-width: 1200px;
-}
-
-.card-especialista {
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    flex: 1 1 300px;
-    max-width: 300px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #eee; /* Borda sutil de luxo */
-}
-
-.card-especialista:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* AJUSTE SOLICITADO: Redução do tamanho das fotos */
-.card-especialista img {
-    width: 100px; /* Reduzido de 120px para 100px */
-    height: 100px; /* Reduzido de 120px para 100px */
-    border-radius: 50%; /* Imagens circulares */
-    object-fit: cover;
-    margin-bottom: 15px;
-    border: 4px solid #00bcd4; /* Borda ciano para destaque */
-    box-shadow: 0 0 0 5px rgba(0, 188, 212, 0.1);
-}
-
-.card-especialista h3 {
-    color: #333;
-    margin-bottom: 5px;
-    font-size: 1.4rem;
-    font-weight: 600;
-}
-
-.card-especialista .especialidade {
-    color: #00bcd4; /* Destaque da especialidade em ciano */
+.botao-ver-mais {
+    background-color: #00acc1;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card-especialista .crm {
-    display: block;
-    color: #999;
-    font-size: 0.9rem;
+.botao-ver-mais:hover {
+    background-color: #00bcd4;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
+
 
 /* --- ESTILIZAÇÃO DO MODAL DE AGENDAMENTO --- */
 .modal {
     display: none; /* Esconde o modal por padrão */
     position: fixed; 
-    z-index: 2000; /* Garante que fique acima de tudo */
+    z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro transparente */
-    backdrop-filter: blur(5px); /* Efeito luxuoso de desfoque */
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
 }
 
 .modal-conteudo {
     background-color: white;
-    margin: 10% auto; /* 10% do topo e centralizado */
+    margin: 10% auto;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -421,13 +480,35 @@ footer p {
     margin-bottom: 20px;
 }
 
+/* NAVEGAÇÃO DE MÊS */
+.navegacao-mes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .mes-ano {
     font-size: 1.2rem;
     font-weight: 600;
     color: #00bcd4;
-    margin-bottom: 10px;
     text-align: center;
+    flex-grow: 1; 
 }
+
+.seta-mes {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #00acc1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.seta-mes:hover {
+    background-color: #e0f7fa;
+}
+
 
 .dias-semana {
     display: grid;
@@ -444,21 +525,27 @@ footer p {
     text-align: center;
 }
 
-.dias-mes span {
+/* Estilo Básico para o Dia (span.dia é adicionado via JS) */
+.dias-mes span.dia {
     padding: 10px;
-    cursor: pointer;
     border-radius: 50%;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
     font-weight: 400;
+}
+
+.dia-disponivel {
+    cursor: pointer;
+    color: #333;
 }
 
 .dia-disponivel:hover {
     background-color: #e0f7fa;
 }
 
+/* CLASSE DE SELEÇÃO DE DIA - MUDA PARA AZUL FORTE */
 .dia-selecionado {
-    background-color: #00bcd4;
-    color: white;
+    background-color: #00bcd4 !important;
+    color: white !important;
     font-weight: 600 !important;
 }
 
@@ -466,6 +553,7 @@ footer p {
     color: #ccc;
     cursor: default;
 }
+
 
 /* Estilização dos Horários */
 .horarios-disponiveis h4 {
@@ -493,11 +581,12 @@ footer p {
     font-weight: 500;
 }
 
-.hora-disponivel:hover {
+.horarios button:hover {
     background-color: #00bcd4;
     color: white;
 }
 
+/* CLASSE DE SELEÇÃO DE HORÁRIO - MUDA PARA AZUL FORTE */
 .hora-selecionada {
     background-color: #00acc1 !important;
     color: white !important;
@@ -521,142 +610,7 @@ footer p {
     background-color: #00acc1;
 }
 
-/* --- ADICIONADO PARA NAVEGAÇÃO DE MÊS NO MODAL --- */
-.navegacao-mes {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.mes-ano {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #00bcd4;
-    text-align: center;
-    flex-grow: 1; /* Permite que o texto cresça */
-}
-
-.seta-mes {
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #00acc1;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.2s;
-}
-
-.seta-mes:hover {
-    background-color: #e0f7fa;
-}
-
-/* Garante que o span do dia seja manipulável */
-.dias-mes .dia {
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    transition: background-color 0.2s;
-}
-/* Altera as classes de seleção para corresponder ao novo JS */
-.dia-selecionado {
-    background-color: #00bcd4 !important;
-    color: white !important;
-    font-weight: 600 !important;
-}
-
-.tecnologia {
-    background-color: #f0faff; /* Fundo ciano claro para contraste */
-}
-
-.cards-tecnologia {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    max-width: 1200px;
-}
-
-.card-tech {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    flex: 1 1 300px;
-    max-width: 350px;
-    text-align: left;
-    transition: transform 0.3s ease;
-    border-left: 5px solid #00bcd4; /* Detalhe lateral em ciano */
-}
-
-.card-tech h3 {
-    color: #00acc1;
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.card-tech p {
-    color: #666;
-    margin-bottom: 0;
-    font-size: 1rem;
-}
-
-.botao-ver-mais {
-    background-color: #00acc1;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-}
-
-.botao-ver-mais:hover {
-    background-color: #00bcd4;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 768px) {
-    .secao {
-        padding: 60px 20px;
-    }
-
-    .secao h2 {
-        font-size: 2rem;
-    }
-
-    .inicio h2 {
-        font-size: 2.5rem;
-    }
-
-    .inicio p {
-        font-size: 1.1rem;
-    }
-    
-    .servicos .cards {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .servicos .card {
-        max-width: 100%;
-    }
-
-    .cards-especialistas {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card-especialista {
-        max-width: 90%;
-    }
-}
-
-
-
+/* --- Media Queries (Responsividade) --- */
 @media (max-width: 900px) {
     .navbar ul {
         display: none;
@@ -676,5 +630,46 @@ footer p {
 
     .menu-toggle {
         display: flex;
+    }
+    
+    .navbar ul li .botao-login,
+    .navbar ul li .botao-cadastro {
+        background-color: white;
+        color: #00acc1;
+        margin-top: 5px;
+        text-align: center;
+        padding: 8px 16px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .secao {
+        padding: 60px 20px;
+    }
+
+    .secao h2 {
+        font-size: 2rem;
+    }
+
+    .inicio h2 {
+        font-size: 2.5rem;
+    }
+
+    .inicio p {
+        font-size: 1.1rem;
+    }
+    
+    .servicos .cards,
+    .cards-tecnologia,
+    .cards-especialistas {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .servicos .card,
+    .card-tech,
+    .card-especialista {
+        max-width: 100%;
     }
 }
