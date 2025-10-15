@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CliniTech | Telemedicina de Elite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+
+            <a href="#inicio" class="logo-container">
+                <img src="ASSETS/logo.png" alt="Logo CliniTech" class="logo">
+                <span class="titulo-logo">CliniTech</span>
+            </a>
+
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#sobre">Quem Somos</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="#tecnologia">Tecnologia</a></li>
+                    <li><a href="especialistas.html">Especialistas</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#login" class="botao-login">Login</a></li>
+                    <li><a href="#cadastro" class="botao-cadastro">Cadastre-se</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+    </header>
+
+    <section id="inicio" class="secao inicio">
+        <div class="conteudo">
+            <h2>Sua Saúde. Elevada.</h2>
+            <p>A CliniTech redefine a telemedicina, oferecendo consultas com especialistas renomados, 
+                onde o luxo encontra a conveniência digital.</p>
+            <button class="botao-agendar">Agende sua Experiência</button>
+        </div>
+    </section>
+
+    <section id="sobre" class="secao sobre">
+        <h2>Sobre o Projeto</h2>
+        <p>A CliniTech nasceu com o objetivo de facilitar o acesso à saúde, permitindo que pacientes se consultem com profissionais de diversas especialidades por meio da telemedicina.</p>
+    </section>
+
+    <section id="servicos" class="secao servicos">
+        <h2>Especialidades em Destaque</h2>
+        <p>Agende sua teleconsulta com profissionais de elite nas áreas que mais importam para você e sua família.</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Cuidado Cardíaco Premium</h3>
+                <p>Consultas de Cardiologia focadas na prevenção e bem-estar do coração, com acompanhamento personalizado e tecnológico.</p>
+            </div>
+            <div class="card">
+                <h3>Saúde Feminina e Ginecologia</h3>
+                <p>Atendimento ginecológico digital, oferecendo conforto, discrição e acesso a especialistas para todas as fases da vida.</p>
+            </div>
+            <div class="card">
+                <h3>Pediatria de Excelência</h3>
+                <p>Assistência pediátrica online com foco no desenvolvimento e saúde de crianças e adolescentes, com a conveniência de casa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tecnologia" class="secao tecnologia">
+        <h2>Tecnologia que Cuida de Você</h2>
+        <p>Investimos em infraestrutura de ponta para garantir diagnósticos precisos, segurança inabalável e uma experiência digital fluida.</p>
+        <div class="cards-tecnologia">
+            <div class="card-tech">
+                <h3>Inteligência Artificial (IA) no Diagnóstico</h3>
+                <p>Nossos sistemas utilizam algoritmos avançados de IA para auxiliar na triagem e análise de dados, oferecendo suporte rápido e preciso aos nossos médicos.</p>
+            </div>
+            <div class="card-tech">
+                <h3>Segurança e LGPD Total</h3>
+                <p>Conformidade total com a LGPD e padrões internacionais. Seus dados médicos são criptografados de ponta a ponta e armazenados em servidores de alta segurança.</p>
+            </div>
+            <div class="card-tech">
+                <h3>Plataforma Multidispositivo</h3>
+                <p>Acesse suas consultas e histórico de qualquer lugar—desktop, tablet ou mobile—com vídeo de alta definição e áudio cristalino.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="especialistas" class="secao especialistas">
+        <h2>Nosso Corpo Clínico de Elite</h2>
+        <p>Profissionais altamente qualificados, prontos para oferecer o melhor atendimento, com a conveniência e tecnologia da telemedicina.</p>
+        <div class="cards-especialistas">
+            <div class="card-especialista">
+                <img src="ASSETS/medico-cardiologista.jpg" alt="Foto do Dr. João Silva">
+                <h3>Dr. João Silva</h3>
+                <p class="especialidade">Cardiologista</p>
+                <span class="crm">Especialista em monitoramento remoto.</span>
+            </div>
+            <div class="card-especialista">
+                <img src="ASSETS/medica-ginecolista.jpg" alt="Foto da Dra. Isabela Costa">
+                <h3>Dra. Isabela Costa</h3>
+                <p class="especialidade">Ginecologista</p>
+                <span class="crm">Foco em atendimento discreto e acolhedor.</span>
+            </div>
+            <div class="card-especialista">
+                <img src="ASSETS/medica-pediatra.png" alt="Foto da Dra. Carla Santos">
+                <h3>Dra. Carla Santos</h3>
+                <p class="especialidade">Pediatra</p>
+                <span class="crm">Atendimento pediátrico com foco na família.</span>
+            </div>
+        </div>
+        <button class="botao-ver-mais">Conhecer o Time Completo</button>
+    </section>
+
+    <section id="contato" class="secao contato">
+        <h2>Fale Conosco</h2>
+        <form>
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="E-mail" required>
+            <textarea placeholder="Mensagem"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 CliniTech - Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="agendamento-modal" class="modal">
+        <div class="modal-conteudo">
+            <div class="calendario-simulado">
+                <div class="navegacao-mes">
+                    <span id="prev-mes" class="seta-mes">&#9664;</span> <div class="mes-ano" id="mes-ano-display">Outubro 2025</div>
+                    <span id="next-mes" class="seta-mes">&#9654;</span> </div>
+                <div class="dias-semana">
+                    <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                </div>
+                <div class="dias-mes" id="dias-mes-container">
+                    </div>
+            </div>
+
+        </div>
+    </div>  
+    
+    <script src="script.js"></script>
+</body>
+</html>
