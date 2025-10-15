@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    background-color: #00bcd4;
+    color: white;
+    padding: 15px 40px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.titulo-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #e0f7fa;
+}
+
+.botao-login {
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.botao-login:hover {
+    background-color: white;
+    color: #00bcd4;
+}
+
+.botao-cadastro {
+    padding: 8px 16px;
+    color: #00bcd4;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.botao-cadastro:hover {
+    background-color: white;
+    color: #00bcd4;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.secao {
+    padding: 80px 40px;
+    text-align: center;
+    min-height: 70vh; /* Garante que as seções tenham uma altura mínima */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px; /* Evita que o conteúdo fique atrás do header fixo */
+}
+
+.secao h2 {
+    font-size: 2.5rem;
+    color: #00acc1; /* Uma variação do ciano para títulos */
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.secao h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #00bcd4;
+    border-radius: 2px;
+}
+
+.secao p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* --- Estilização da Seção Inicial (.inicio) --- */
+.inicio {
+    background: linear-gradient(135deg, #00bcd4, #00acc1); /* Gradiente luxuoso */
+    color: white;
+    padding-bottom: 80px;
+}
+
+.inicio h2 {
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.inicio h2::after {
+    background-color: white;
+}
+
+.inicio p {
+    font-size: 1.3rem;
+    color: #e0f7fa;
+    margin-bottom: 40px;
+}
+
+.inicio button {
+    background-color: white;
+    color: #00bcd4;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.inicio button:hover {
+    background-color: #e0f7fa;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Estilização da Seção Sobre (.sobre) --- */
+.sobre {
+    background-color: #f8f8f8;
+}
+
+/* --- Estilização da Seção Serviços (.servicos) --- */
+.servicos {
+    background-color: white;
+}
+
+.servicos .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    max-width: 1200px;
+}
+
+.servicos .card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    flex: 1 1 300px; /* Permite que os cards cresçam, mas com base de 300px */
+    max-width: 350px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid #00bcd4; /* Detalhe de luxo */
+}
+
+.servicos .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.servicos .card h3 {
+    color: #00bcd4;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.servicos .card p {
+    color: #666;
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+/* --- Estilização da Seção Contato (.contato) --- */
+.contato {
+    background-color: #f0faff; /* Ciano bem claro */
+}
+
+.contato form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contato input[type="text"],
+.contato input[type="email"],
+.contato textarea {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contato input:focus,
+.contato textarea:focus {
+    border-color: #00bcd4;
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+    outline: none;
+}
+
+.contato textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contato button[type="submit"] {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contato button[type="submit"]:hover {
+    background-color: #00acc1;
+}
+
+footer {
+    background-color: #00acc1; 
+    color: white;
+    text-align: center;
+    padding: 20px 40px;
+    font-size: 0.9rem;
+    border-top: 3px solid #00bcd4;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .secao {
+        padding: 60px 20px;
+    }
+
+    .secao h2 {
+        font-size: 2rem;
+    }
+
+    .inicio h2 {
+        font-size: 2.5rem;
+    }
+
+    .inicio p {
+        font-size: 1.1rem;
+    }
+    
+    .servicos .cards {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .servicos .card {
+        max-width: 100%;
+    }
+}
+
+
+
+@media (max-width: 900px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        background-color: #00acc1;
+        position: absolute;
+        top: 80px;
+        right: 40px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar.active ul {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
