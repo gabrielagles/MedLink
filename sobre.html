@@ -6,6 +6,7 @@
     <title>CliniTech | Telemedicina de Elite</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
 </head>
 
 <body>
@@ -13,17 +14,17 @@
         <div class="header-container">
 
             <a href="index.html" class="logo-container">
-                <img src="ASSETS/logo.png" alt="Logo CliniTech" class="logo" href="index.html">
-                <span class="titulo-logo" href="index.html">CliniTech</span>
+                <img src="ASSETS/logo.png" alt="Logo CliniTech" class="logo">
+                <span class="titulo-logo">CliniTech</span>
             </a>
 
             <nav class="navbar">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="sobre.html">Quem Somos</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li> 
+                    <li><a href="servicos.html">Serviços</a></li>
                     <li><a href="#tecnologia">Tecnologia</a></li>
-                    <li><a href="#especialistas">Especialistas</a></li>
+                    <li><a href="especialistas.html">Especialistas</a></li>
                     <li><a href="#contato">Contato</a></li>
                     <li><a href="#login" class="botao-login">Login</a></li>
                     <li><a href="#cadastro" class="botao-cadastro">Cadastre-se</a></li>
@@ -40,58 +41,77 @@
     </header>
 
     <section id="inicio" class="secao inicio">
-        <div class="conteudo">
-            <h2>Sua Saúde. Elevada.</h2>
-            <p>A CliniTech redefine a telemedicina, oferecendo consultas com especialistas renomados, 
-                onde o luxo encontra a conveniência digital.</p>
-            <button class="botao-agendar">Agende sua Experiência</button>
+        <h2>O Futuro da Medicina na Palma da Sua Mão.</h2>
+        <p>Conecte-se a uma rede exclusiva de especialistas de forma segura, rápida e com o conforto do seu lar. </p>
+    </section>
+
+    <section id="visao" class="secao visao fade-in">
+        <h2>Nossa Visão</h2>
+        <p>Vamos além da telemedicina básica. Nossa missão é oferecer um ecossistema de saúde digital que prioriza a excelência, o sigilo e a atenção integral ao paciente.</p>
+        <div class="cards-visao">
+            <div class="card-vision">
+                <i class="fas fa-microchip"></i>
+                <h3>Inovação Contínua</h3>
+                <p>Integramos as últimas ferramentas de IA e conectividade para diagnósticos mais rápidos e precisos.</p>
+            </div>
+            <div class="card-vision">
+                <i class="fas fa-lock"></i>
+                <h3>Privacidade Rigorosa</h3>
+                <p>Criptografia de ponta a ponta e total conformidade com a LGPD e HIPAA garantem a segurança dos seus dados.</p>
+            </div>
+            <div class="card-vision">
+                <i class="fas fa-star"></i>
+                <h3>Exclusividade no Atendimento</h3>
+                <p>Time médico de elite, com foco em uma experiência humanizada, atenciosa e completamente personalizada.</p>
+            </div>
         </div>
     </section>
 
-    <section id="sobre" class="secao sobre">
-        <h2>Sobre o Projeto</h2>
-        <p>A CliniTech nasceu com o objetivo de facilitar o acesso à saúde, permitindo que pacientes se consultem com profissionais de diversas especialidades por meio da telemedicina.</p>
-    </section>
-
-    <section id="servicos" class="secao servicos">
-        <h2>Especialidades em Destaque</h2>
-        <p>Agende sua teleconsulta com profissionais de elite nas áreas que mais importam para você e sua família.</p>
+    <section id="cuidado" class="secao cuidado fade-in">
+        <h2>Caminhos do Cuidado</h2>
+        <p>Nossos serviços são estruturados em pilares essenciais para garantir uma vida mais saudável e conectada.</p>
         <div class="cards">
             <div class="card">
-                <h3>Cuidado Cardíaco Premium</h3>
-                <p>Consultas de Cardiologia focadas na prevenção e bem-estar do coração, com acompanhamento personalizado e tecnológico.</p>
+                <i class="fas fa-heartbeat"></i>
+                <h3>Cuidado Preventivo</h3>
+                <p>Consultas e check-ups focados na manutenção da saúde e identificação precoce de riscos, tudo online.</p>
             </div>
             <div class="card">
-                <h3>Saúde Feminina e Ginecologia</h3>
-                <p>Atendimento ginecológico digital, oferecendo conforto, discrição e acesso a especialistas para todas as fases da vida.</p>
+                <i class="fas fa-brain"></i>
+                <h3>Apoio Integrativo</h3>
+                <p>Conexão com nutrólogos, psicólogos e fisioterapeutas para um tratamento completo de corpo e mente.</p>
             </div>
             <div class="card">
-                <h3>Pediatria de Excelência</h3>
-                <p>Assistência pediátrica online com foco no desenvolvimento e saúde de crianças e adolescentes, com a conveniência de casa.</p>
+                <i class="fas fa-pills"></i>
+                <h3>Monitoramento Crônico</h3>
+                <p>Acompanhamento digital de pacientes com condições crônicas, garantindo adesão e ajustes rápidos de medicação.</p>
             </div>
         </div>
     </section>
 
-    <section id="tecnologia" class="secao tecnologia">
+    <section id="tecnologia" class="secao tecnologia fade-in">
         <h2>Tecnologia que Cuida de Você</h2>
-        <p>Investimos em infraestrutura de ponta para garantir diagnósticos precisos, segurança inabalável e uma experiência digital fluida.</p>
+        <p>Infraestrutura robusta para garantir segurança inabalável e uma experiência digital fluida.</p>
         <div class="cards-tecnologia">
             <div class="card-tech">
-                <h3>Inteligência Artificial (IA) no Diagnóstico</h3>
+                <i class="fas fa-robot"></i>
+                <h3>Diagnóstico Assistido por IA</h3>
                 <p>Nossos sistemas utilizam algoritmos avançados de IA para auxiliar na triagem e análise de dados, oferecendo suporte rápido e preciso aos nossos médicos.</p>
             </div>
             <div class="card-tech">
+                <i class="fas fa-shield-alt"></i>
                 <h3>Segurança e LGPD Total</h3>
                 <p>Conformidade total com a LGPD e padrões internacionais. Seus dados médicos são criptografados de ponta a ponta e armazenados em servidores de alta segurança.</p>
             </div>
             <div class="card-tech">
+                <i class="fas fa-mobile-alt"></i>
                 <h3>Plataforma Multidispositivo</h3>
                 <p>Acesse suas consultas e histórico de qualquer lugar—desktop, tablet ou mobile—com vídeo de alta definição e áudio cristalino.</p>
             </div>
         </div>
     </section>
     
-    <section id="especialistas" class="secao especialistas">
+    <section id="especialistas" class="secao especialistas fade-in">
         <h2>Nosso Corpo Clínico de Elite</h2>
         <p>Profissionais altamente qualificados, prontos para oferecer o melhor atendimento, com a conveniência e tecnologia da telemedicina.</p>
         <div class="cards-especialistas">
@@ -117,8 +137,9 @@
         <button class="botao-ver-mais">Conhecer o Time Completo</button>
     </section>
 
-    <section id="contato" class="secao contato">
+    <section id="contato" class="secao contato fade-in">
         <h2>Fale Conosco</h2>
+        <p>Tem dúvidas ou precisa de ajuda? Envie sua mensagem e nossa equipe retornará em breve.</p>
         <form>
             <input type="text" placeholder="Nome" required>
             <input type="email" placeholder="E-mail" required>
