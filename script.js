@@ -185,5 +185,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+        // ===== MODAL DE LOGIN =====
+    const loginBtn = document.querySelector('.botao-login');
+    const modalLogin = document.getElementById('login-modal');
+    const fecharLogin = document.getElementById('fechar-login');
+
+    // Abrir modal
+    loginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalLogin.style.display = 'flex';
+    });
+
+    // Fechar ao clicar no X
+    fecharLogin.addEventListener('click', () => {
+    modalLogin.style.display = 'none';
+    });
+
+    // Fechar ao clicar fora do conteúdo
+    window.addEventListener('click', (e) => {
+        if (e.target === modalLogin) {
+            modalLogin.style.display = 'none';
+        }
+    });
+
     
 });

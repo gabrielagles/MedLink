@@ -195,67 +195,62 @@ header {
 }
 
 /* --- Estilização da Seção Visão (.visao) --- (NOVO BLOCO) */
-.visao {
-    background-color: white; /* Fundo branco para contraste */
-}
-
-/* Contêiner Flexbox para os cards */
-.cards-visao {
+/* --- Unificação do estilo dos cards de Visão e Cuidado --- */
+.cards-visao,
+.cards {
     display: flex;
-    flex-wrap: wrap; /* Permite que os cards quebrem em telas menores */
-    justify-content: center; /* Centraliza os cards */
-    gap: 30px; /* Espaço entre os cards */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
     margin-top: 40px;
     max-width: 1100px;
     padding: 0 20px;
 }
 
-/* Estilo individual do Card */
-.card-vision {
-    /* Removido o background #f0faff para seguir a imagem original (fundo branco) */
-    background-color: white; 
+.card-vision,
+.card {
+    background-color: white;
     padding: 30px;
     border-radius: 15px;
-    /* Reduzida a sombra para se assemelhar mais à imagem */
-    box-shadow: none; 
+    box-shadow: none;
     flex: 1 1 300px;
     max-width: 350px;
     text-align: center;
     transition: transform 0.3s ease;
-    /* Removida a borda para seguir a imagem original */
-    border: none; 
+    border: none;
 }
 
-.card-vision:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* Sombra sutil no hover */
+.card-vision:hover,
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilo dos Ícones */
-.card-vision i {
+.card-vision i,
+.card i {
     font-size: 2.5rem;
-    color: #00bcd4; 
-    margin-bottom: 10px; /* Menos espaço abaixo do ícone */
-    display: block; 
+    color: #00bcd4;
+    margin-bottom: 10px;
+    display: block;
 }
 
-/* Estilo do Título do Card */
-.card-vision h3 {
+.card-vision h3,
+.card h3 {
     color: #333;
     font-size: 1.35rem;
-    font-weight: 700; /* Mais negrito */
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
-/* Estilo do Parágrafo do Card */
-.card-vision p {
+.card-vision p,
+.card p {
     color: #666;
-    font-size: 1.1rem; /* Um pouco maior para melhor leitura */
+    font-size: 1.1rem;
     line-height: 1.6;
-    margin: 0 auto; /* Centraliza o parágrafo dentro do card */
-    max-width: 300px; /* Limita a largura para melhor leitura */
+    margin: 0 auto;
+    max-width: 300px;
 }
-/* ------------------------------------------------------------- */
+
 
 
 /* --- Estilização das Seções de Conteúdo (Serviços, Tecnologia, Especialistas, Contato, Footer) --- */
@@ -672,6 +667,111 @@ footer p {
 .botao-confirmar-agendamento:hover {
     background-color: #00acc1;
 }
+
+/* ===== MODAL DE LOGIN ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  animation: aparecer 0.3s ease;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-login .campo {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.form-login label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-login input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-login button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00bcd4;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-login button:hover {
+  background-color: #0097a7;
+}
+
+.cadastro-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.cadastro-link a {
+  color: #00bcd4;
+  text-decoration: none;
+}
+
+.cadastro-link a:hover {
+  text-decoration: underline;
+}
+
+.fechar {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.fechar:hover {
+  color: #000;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* --- Media Queries (Responsividade) --- */
 @media (max-width: 900px) {
