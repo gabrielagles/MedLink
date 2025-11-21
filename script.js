@@ -1,213 +1,189 @@
-// --- script.js para o site CliniTech (FINAL) ---
+document.addEventListener('DOMContentLoaded', function () {
 
-document.addEventListener('DOMContentLoaded', function() {
-    // VARIÁVEIS COMUNS
-    const menuToggle = document.getElementById('menu-toggle');
-    const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelector('.nav-links');
-    const modal = document.getElementById('agendamento-modal');
-    const btnAgendar = document.querySelector('.secao.inicio .botao-agendar');
-    const spanFechar = document.getElementsByClassName("fechar-modal")[0];
+    // ====== CAPTURA DE ELEMENTOS ======
+    const modalAgendamento = document.getElementById('agendamento-modal');
+    const modalTime = document.getElementById('time-modal');
+    const modalLogin = document.getElementById('login-modal');
+
+    const btnAgendar = document.querySelector('.botao-agendar');
+    const btnVerMais = document.querySelector('.botao-ver-mais');
+    const btnLogin = document.querySelector('.botao-login');
+
+    const fecharAgendamento = document.querySelector('.fechar-modal');
+    const fecharTime = document.querySelector('.fechar-time');
+    const fecharLogin = document.getElementById('fechar-login');
+
     const horarioContainer = document.querySelector('.horarios');
-    
-    // VARIÁVEIS DO CALENDÁRIO
+    const confirmarBtn = document.querySelector('.botao-confirmar-agendamento');
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbar = document.querySelector(".navbar");
+
+    let cardsEspecialistas = document.querySelectorAll('.card-especialista');
+    let cardsEspecialistasModal = document.querySelectorAll('.card-especialista-modal');
+
+    // ===== VARIÁVEIS DO CALENDÁRIO =====
     const diasMesContainer = document.getElementById('dias-mes-container');
     const mesAnoDisplay = document.getElementById('mes-ano-display');
     const prevMesBtn = document.getElementById('prev-mes');
     const nextMesBtn = document.getElementById('next-mes');
     const nomesMeses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-    
-    // Inicia a data no mês atual para navegação (Ou use um mês fixo como 2025, 9 (Outubro) para demonstração)
-    let dataAtualCalendario = new Date(2025, 9, 1); 
 
-    // FUNÇÕES DO CALENDÁRIO
+    let dataAtualCalendario = new Date();
+    let diaSelecionado = null;
+    let horaSelecionada = null;
+    let medicoSelecionado = null;
+    let especialidadeSelecionada = null;
+
+    // ===== FUNÇÃO: QUANTIDADE DE DIAS NO MÊS =====
     function getDaysInMonth(year, month) {
-        // Retorna o número de dias no mês
         return new Date(year, month + 1, 0).getDate();
     }
 
+    // ===== FUNÇÃO: GERAR CALENDÁRIO =====
     function gerarCalendario() {
-        if (!diasMesContainer || !mesAnoDisplay) return;
+
+        if (!diasMesContainer) return;
 
         const ano = dataAtualCalendario.getFullYear();
         const mes = dataAtualCalendario.getMonth();
-        const primeiroDiaSemana = dataAtualCalendario.getDay(); // 0 = Dom, 6 = Sáb
+        const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
         const diasNoMes = getDaysInMonth(ano, mes);
-        
-        // Limites de Agendamento
-        const dataMinima = new Date(); // Mês atual
-        dataMinima.setDate(1); 
-        const limiteAno = 2028; 
-        const limiteMes = 11; // Dezembro 2028
-        let dataLimite = new Date(limiteAno, limiteMes, getDaysInMonth(limiteAno, limiteMes));
-        
-        // Atualiza a exibição do Mês/Ano
+
         mesAnoDisplay.textContent = `${nomesMeses[mes]} ${ano}`;
-        
-        // Habilita/Desabilita setas com base nos limites
-        prevMesBtn.style.visibility = (dataAtualCalendario.getTime() <= dataMinima.getTime()) ? 'hidden' : 'visible';
-        nextMesBtn.style.visibility = (dataAtualCalendario.getTime() >= dataLimite.getTime()) ? 'hidden' : 'visible';
 
         let htmlDias = '';
-        
-        // 1. Cria espaços vazios (dias do mês anterior)
+
         for (let i = 0; i < primeiroDiaSemana; i++) {
             htmlDias += `<span class="dia-inativo"></span>`;
         }
 
-        // 2. Cria os dias do mês
         for (let dia = 1; dia <= diasNoMes; dia++) {
-            let classe = 'dia';
-            let dataDia = new Date(ano, mes, dia);
-
-            // Verifica se o dia é anterior ao dia de hoje (apenas para o mês atual)
-            if (dataDia.getTime() < new Date().setHours(0,0,0,0)) {
-                classe += ' dia-inativo';
-            } else if (dia === 7 && mes === 9 && ano === 2025) {
-                // Seleção inicial de demonstração (Dia 7 de Outubro 2025)
-                classe += ' dia-selecionado';
-            } else {
-                classe += ' dia-disponivel';
-            }
-            
+            const classe = (dia === diaSelecionado) ? 'dia dia-selecionado' : 'dia dia-disponivel';
             htmlDias += `<span class="${classe}" data-dia="${dia}">${dia}</span>`;
         }
 
         diasMesContainer.innerHTML = htmlDias;
     }
-    
-    // LÓGICA DE NAVEGAÇÃO DE MÊS
-    if (prevMesBtn && nextMesBtn) {
+
+    // ===== CLICANDO NOS DIAS DO CALENDÁRIO =====
+    if (diasMesContainer) {
+        diasMesContainer.addEventListener('click', e => {
+            if (e.target.classList.contains('dia-disponivel')) {
+                diasMesContainer.querySelectorAll('.dia').forEach(d => d.classList.remove('dia-selecionado'));
+                e.target.classList.add('dia-selecionado');
+                diaSelecionado = e.target.dataset.dia;
+            }
+        });
+    }
+
+    if (prevMesBtn) {
         prevMesBtn.addEventListener('click', () => {
             dataAtualCalendario.setMonth(dataAtualCalendario.getMonth() - 1);
             gerarCalendario();
         });
+    }
 
+    if (nextMesBtn) {
         nextMesBtn.addEventListener('click', () => {
             dataAtualCalendario.setMonth(dataAtualCalendario.getMonth() + 1);
             gerarCalendario();
         });
     }
 
-    // LÓGICA DE SELEÇÃO DE DIA NO CALENDÁRIO 📅
-    if (diasMesContainer) {
-        diasMesContainer.addEventListener('click', function(e) {
-            const clickedDay = e.target;
-            
-            // Verifica se é um dia disponível
-            if (clickedDay.classList.contains('dia-disponivel')) {
-                // 1. Remove a seleção de todos os dias
-                const allDays = diasMesContainer.querySelectorAll('.dia');
-                allDays.forEach(day => {
-                    day.classList.remove('dia-selecionado');
-                    // Garante que só os disponíveis possam ser clicados
-                    if (!day.classList.contains('dia-inativo')) {
-                        day.classList.add('dia-disponivel');
-                    }
-                });
-                
-                // 2. Adiciona a seleção ao dia clicado
-                clickedDay.classList.remove('dia-disponivel');
-                clickedDay.classList.add('dia-selecionado');
-            }
-        });
-    }
-
-    // 1. Funcionalidade do Menu Hamburger (Mobile)
-    if (menuToggle && navbar && navLinks) {
-        menuToggle.addEventListener('click', function() {
-            navbar.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
-                setTimeout(() => {
-                    navbar.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                }, 100); 
-            });
-        });
-    }
-
-    // 2. Funcionalidade do Modal de Agendamento
-    if (btnAgendar && modal && spanFechar) {
-        btnAgendar.onclick = function() {
-            // Define o calendário para Outubro 2025 ao abrir (mês inicial da demonstração)
-            dataAtualCalendario = new Date(2025, 9, 1); 
-            gerarCalendario(); 
-            modal.style.display = "block";
-        }
-        spanFechar.onclick = function() {
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    }
-
-    // 3. Funcionalidade de Seleção de Horário (Mudar Cor do Botão) 
+    // ===== SELEÇÃO DE HORÁRIO =====
     if (horarioContainer) {
-        horarioContainer.addEventListener('click', function(e) {
-            const clickedButton = e.target;
-            
-            if (clickedButton.tagName === 'BUTTON' && clickedButton.parentElement === horarioContainer) {
-                
-                // 1. Remove a classe de seleção de todos os botões de horário
-                const allButtons = horarioContainer.querySelectorAll('button');
-                allButtons.forEach(btn => {
-                    btn.classList.remove('hora-selecionada');
-                    // Assume que todos os botões são disponíveis se não estiverem selecionados
-                    btn.classList.add('hora-disponivel'); 
-                });
-
-                // 2. Adiciona a classe de seleção (muda a cor azul) ao botão clicado
-                clickedButton.classList.remove('hora-disponivel');
-                clickedButton.classList.add('hora-selecionada');
+        horarioContainer.addEventListener('click', e => {
+            if (e.target.tagName === 'BUTTON') {
+                horarioContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('hora-selecionada'));
+                e.target.classList.add('hora-selecionada');
+                horaSelecionada = e.target.textContent;
             }
         });
     }
 
-    // 4. Funcionalidade de Scroll Suave
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            if (this.getAttribute('href') === '#login' || this.getAttribute('href') === '#cadastro') {
+    // ===== CONFIRMAR AGENDAMENTO =====
+    if (confirmarBtn) {
+        confirmarBtn.addEventListener('click', () => {
+            if (!diaSelecionado || !horaSelecionada || !medicoSelecionado) {
+                alert('Por favor, selecione um especialista, uma data e um horário.');
                 return;
             }
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-            }
+
+            const mes = nomesMeses[dataAtualCalendario.getMonth()];
+            const ano = dataAtualCalendario.getFullYear();
+
+            const agendamento = {
+                medico: medicoSelecionado,
+                especialidade: especialidadeSelecionada,
+                dia: diaSelecionado,
+                mes,
+                ano,
+                hora: horaSelecionada
+            };
+
+            localStorage.setItem('agendamentoCliniTech', JSON.stringify(agendamento));
+
+            alert(`✓ Consulta agendada com sucesso!\n\nMédico: ${agendamento.medico}\nEspecialidade: ${agendamento.especialidade}\nData: ${agendamento.dia} de ${agendamento.mes} de ${agendamento.ano}\nHorário: ${agendamento.hora}`);
+
+            modalAgendamento.style.display = "none";
         });
-    });
+    }
 
-        // ===== MODAL DE LOGIN =====
-    const loginBtn = document.querySelector('.botao-login');
-    const modalLogin = document.getElementById('login-modal');
-    const fecharLogin = document.getElementById('fechar-login');
+    // ===== ABRIR MODAL DE AGENDAMENTO =====
+    if (btnAgendar && modalAgendamento) {
+        btnAgendar.addEventListener('click', () => {
+            gerarCalendario();
+            modalAgendamento.style.display = "flex";
+        });
+    }
 
-    // Abrir modal
-    loginBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    modalLogin.style.display = 'flex';
-    });
+    // ===== FECHAR AGENDAMENTO =====
+    if (fecharAgendamento) {
+        fecharAgendamento.addEventListener('click', () => {
+            modalAgendamento.style.display = "none";
+        });
+    }
 
-    // Fechar ao clicar no X
-    fecharLogin.addEventListener('click', () => {
-    modalLogin.style.display = 'none';
-    });
+    // ===== MODAL TIME COMPLETO =====
+    if (btnVerMais && modalTime) {
+        btnVerMais.addEventListener('click', () => {
+            modalTime.style.display = "flex";
+        });
+    }
 
-    // Fechar ao clicar fora do conteúdo
+    if (fecharTime) {
+        fecharTime.addEventListener('click', () => {
+            modalTime.style.display = "none";
+        });
+    }
+
+    // ===== ABRIR MODAL DE LOGIN =====
+    if (btnLogin && modalLogin) {
+        btnLogin.addEventListener('click', () => {
+            modalLogin.style.display = "flex";
+        });
+    }
+
+    // ===== FECHAR LOGIN =====
+    if (fecharLogin) {
+        fecharLogin.addEventListener('click', () => {
+            modalLogin.style.display = "none";
+        });
+    }
+
+    // ===== FECHAR MODAIS CLICANDO FORA =====
     window.addEventListener('click', (e) => {
-        if (e.target === modalLogin) {
-            modalLogin.style.display = 'none';
-        }
+        if (e.target === modalAgendamento) modalAgendamento.style.display = "none";
+        if (e.target === modalTime) modalTime.style.display = "none";
+        if (e.target === modalLogin) modalLogin.style.display = "none";
     });
 
-    
+    // ===== MENU MOBILE =====
+    if (menuToggle && navbar) {
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle("active");
+        });
+    }
+
 });
