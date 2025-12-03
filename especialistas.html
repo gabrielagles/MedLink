@@ -9,12 +9,15 @@
 </head>
 
 <body>
+
+  
+    <!-- HEADER -->
     <header>
         <div class="header-container">
 
             <a href="index.html" class="logo-container">
-                <img src="ASSETS/logo.png" alt="Logo CliniTech" class="logo" href="index.html">
-                <span class="titulo-logo" href="index.html">CliniTech</span>
+                <img src="ASSETS/logo.png" alt="Logo CliniTech" class="logo">
+                <span class="titulo-logo">CliniTech</span>
             </a>
 
             <nav class="navbar">
@@ -36,6 +39,7 @@
         </div>
     </header>
 
+    <!-- INÍCIO -->
     <section id="inicio" class="secao inicio">
         <div class="conteudo">
             <h2>Sua Saúde</h2>
@@ -45,149 +49,63 @@
         </div>
     </section>
 
+    <!-- SOBRE -->
     <section id="sobre" class="secao sobre">
         <h2>Sobre o Projeto</h2>
         <p>A CliniTech nasceu com o objetivo de facilitar o acesso à saúde, permitindo que pacientes se consultem com profissionais de diversas especialidades por meio da telemedicina.</p>
     </section>
 
+    <!-- SERVIÇOS -->
     <section id="servicos" class="secao servicos">
         <h2>Especialidades em Destaque</h2>
-        <p>Agende sua teleconsulta com profissionais de elite nas áreas que mais importam para você e sua família.</p>
+        <p>Agende sua teleconsulta com profissionais de elite.</p>
         <div class="cards">
             <div class="card">
                 <h3>Cuidado Cardíaco Premium</h3>
-                <p>Consultas de Cardiologia focadas na prevenção e bem-estar do coração, com acompanhamento personalizado e tecnológico.</p>
+                <p>Consultas focadas no bem-estar do coração.</p>
             </div>
             <div class="card">
-                <h3>Saúde Feminina e Ginecologia</h3>
-                <p>Atendimento ginecológico digital, oferecendo conforto, discrição e acesso a especialistas para todas as fases da vida.</p>
+                <h3>Saúde Feminina</h3>
+                <p>Atendimento ginecológico com conforto e discrição.</p>
             </div>
             <div class="card">
                 <h3>Pediatria de Excelência</h3>
-                <p>Assistência pediátrica online com foco no desenvolvimento e saúde de crianças e adolescentes, com a conveniência de casa.</p>
+                <p>Cuidados online para crianças e adolescentes.</p>
             </div>
         </div>
     </section>
 
+    <!-- TECNOLOGIA -->
     <section id="tecnologia" class="secao tecnologia">
         <h2>Tecnologia que Cuida de Você</h2>
-        <p>Investimos em infraestrutura de ponta para garantir diagnósticos precisos, segurança inabalável e uma experiência digital fluida.</p>
-        <div class="cards-tecnologia">
-            <div class="card-tech">
-                <h3>Inteligência Artificial (IA) no Diagnóstico</h3>
-                <p>Nossos sistemas utilizam algoritmos avançados de IA para auxiliar na triagem e análise de dados, oferecendo suporte rápido e preciso aos nossos médicos.</p>
-            </div>
-            <div class="card-tech">
-                <h3>Segurança e LGPD Total</h3>
-                <p>Conformidade total com a LGPD e padrões internacionais. Seus dados médicos são criptografados de ponta a ponta e armazenados em servidores de alta segurança.</p>
-            </div>
-            <div class="card-tech">
-                <h3>Plataforma Multidispositivo</h3>
-                <p>Acesse suas consultas e histórico de qualquer lugar—desktop, tablet ou mobile—com vídeo de alta definição e áudio cristalino.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="especialistas" class="secao especialistas">
-        <h2>Nosso Corpo Clínico de Elite</h2>
-        <p>Profissionais altamente qualificados, prontos para oferecer o melhor atendimento, com a conveniência e tecnologia da telemedicina.</p>
-        <div class="cards-especialistas">
-            <div class="card-especialista">
-                <img src="ASSETS/medico-cardiologista.jpg" alt="Foto do Dr. João Silva">
-                <h3>Dr. João Silva</h3>
-                <p class="especialidade">Cardiologista</p>
-                <span class="crm">Especialista em monitoramento remoto.</span>
-            </div>
-            <div class="card-especialista">
-                <img src="ASSETS/medica-ginecolista.jpg" alt="Foto da Dra. Isabela Costa">
-                <h3>Dra. Isabela Costa</h3>
-                <p class="especialidade">Ginecologista</p>
-                <span class="crm">Foco em atendimento discreto e acolhedor.</span>
-            </div>
-            <div class="card-especialista">
-                <img src="ASSETS/medica-pediatra.png" alt="Foto da Dra. Carla Santos">
-                <h3>Dra. Carla Santos</h3>
-                <p class="especialidade">Pediatra</p>
-                <span class="crm">Atendimento pediátrico com foco na família.</span>
-            </div>
-        </div>
-        <button class="botao-ver-mais">Conhecer o Time Completo</button>
+        <p>Infraestrutura de ponta para garantir segurança e precisão.</p>
     </section>
 
-    <section id="contato" class="secao contato">
-        <h2>Fale Conosco</h2>
-        <form>
-            <input type="text" placeholder="Nome" required>
-            <input type="email" placeholder="E-mail" required>
-            <textarea placeholder="Mensagem"></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-
-        <!-- ===== MODAL "TIME COMPLETO" ===== -->
-    <div id="time-modal" class="modal">
-        <div class="modal-conteudo time-conteudo">
-            <span class="fechar-time">&times;</span>
-            <h3>Nosso Time Completo</h3>
-            <p>Selecione um especialista para agendar uma consulta.</p>
-            <div class="cards-especialistas-modal">
-                <div class="card-especialista-modal">
-                    <img src="ASSETS/medico-cardiologista.jpg" alt="Dr. João Silva">
-                    <h3>Dr. João Silva</h3>
-                    <p class="especialidade">Cardiologista</p>
-                    <span>Especialista em monitoramento remoto.</span>
-                </div>
-                <div class="card-especialista-modal">
-                    <img src="ASSETS/medica-ginecolista.jpg" alt="Dra. Isabela Costa">
-                    <h3>Dra. Isabela Costa</h3>
-                    <p class="especialidade">Ginecologista</p>
-                    <span>Atendimento discreto e acolhedor.</span>
-                </div>
-                <div class="card-especialista-modal">
-                    <img src="ASSETS/medica-pediatra.png" alt="Dra. Carla Santos">
-                    <h3>Dra. Carla Santos</h3>
-                    <p class="especialidade">Pediatra</p>
-                    <span>Foco na saúde infantil.</span>
-                </div>
-                <div class="card-especialista-modal">
-                    <img src="ASSETS/medico-psiquiatra.jpg" alt="Dr. Ricardo Lima">
-                    <h3>Dr. Ricardo Lima</h3>
-                    <p class="especialidade">Psiquiatra</p>
-                    <span>Atendimento humanizado e sigiloso.</span>
-                </div>
-                <div class="card-especialista-modal">
-                    <img src="ASSETS/medica-dermatologista.jpg" alt="Dra. Beatriz Rocha">
-                    <h3>Dra. Beatriz Rocha</h3>
-                    <p class="especialidade">Dermatologista</p>
-                    <span>Cuidados avançados com a pele.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2025 CliniTech - Todos os direitos reservados.</p>
     </footer>
 
+    <!-- MODAL DE AGENDAMENTO -->
     <div id="agendamento-modal" class="modal">
         <div class="modal-conteudo">
             <span class="fechar-modal">&times;</span>
             <h3>Agendamento de Consulta</h3>
+
             <p class="modal-subtitulo">Selecione uma data e horário disponíveis.</p>
 
             <div class="calendario-simulado">
                 <div class="navegacao-mes">
-                    <span id="prev-mes" class="seta-mes">&#9664;</span> 
+                    <span id="prev-mes" class="seta-mes">&#9664;</span>
                     <div class="mes-ano" id="mes-ano-display">Outubro 2025</div>
-                    <span id="next-mes" class="seta-mes">&#9654;</span> 
+                    <span id="next-mes" class="seta-mes">&#9654;</span>
                 </div>
-                
+
                 <div class="dias-semana">
-                    <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                    <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span>
+                    <span>Qui</span><span>Sex</span><span>Sáb</span>
                 </div>
-                <div class="dias-mes" id="dias-mes-container">
-                    </div>
+                <div class="dias-mes" id="dias-mes-container"></div>
             </div>
 
             <div class="horarios-disponiveis">
@@ -204,28 +122,118 @@
         </div>
     </div>
 
-     <!-- ===== MODAL DE LOGIN ===== -->
+    <!-- MODAL LOGIN -->
     <div id="login-modal" class="modal">
         <div class="modal-content">
-        <span class="fechar" id="fechar-login">&times;</span>
-        <h2>Login</h2>
-        <form class="form-login">
-            <div class="campo">
-            <label for="email-login">E-mail</label>
-            <input type="email" id="email-login" placeholder="Digite seu e-mail" required />
-            </div>
+            <span class="fechar" id="fechar-login">&times;</span>
+            <h2>Login</h2>
 
-            <div class="campo">
-            <label for="senha-login">Senha</label>
-            <input type="password" id="senha-login" placeholder="Digite sua senha" required />
-            </div>
+            <form class="form-login">
+                <div class="campo">
+                    <label for="email-login">E-mail</label>
+                    <input type="email" id="email-login" required />
+                </div>
 
-            <button type="submit">Entrar</button>
-            <p class="cadastro-link">Ainda não tem conta? <a href="#cadastro">Cadastre-se</a></p>
-        </form>
+                <div class="campo">
+                    <label for="senha-login">Senha</label>
+                    <input type="password" id="senha-login" required />
+                </div>
+
+                <button type="submit">Entrar</button>
+                <p class="cadastro-link">Ainda não tem conta? <a href="#">Cadastre-se</a></p>
+            </form>
         </div>
     </div>
-    
+
+        <!-- MODAL DE ESPECIALIDADES -->
+    <div id="modal-especialidades" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-especialidades">&times;</span>
+            <h3>Aperte o botão para escolher o especialista</h3>
+
+            <div class="lista-especialidades">
+                <button class="btn-especialidade" data-espec="Cardiologista">Escolher o especialista</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL LISTA DE ESPECIALISTAS ===== -->
+    <div id="modal-time" class="modal-time">
+        <div class="modal-time-content">
+
+            <span class="modal-time-close">&times;</span>
+            <h2>Todos os Especialistas</h2>
+
+            <!-- Agrupamento por especialidade -->
+            <div class="modal-time-group">
+                <h3>Cardiologia</h3>
+
+                <div class="modal-time-card">
+                    <img src="ASSETS/medico-cardiologista.jpg" alt="Dr. João Silva">
+                    <h4>Dr. João Silva</h4>
+                    <p class="modal-time-area">Cardiologia</p>
+                </div>
+
+                <div class="modal-time-card">
+                    <img src="ASSETS/foto-cardiologista.jpg" alt="Dr. Pedro Moura">
+                    <h4>Dr. Pedro Moura</h4>
+                    <p class="modal-time-area">Cardiologia</p>
+                </div>
+            </div>
+
+            <div class="modal-time-group">
+                <h3>Ginecologia</h3>
+
+                <div class="modal-time-card">
+                    <img src="ASSETS/Gemini_Generated_Image_bbydlibbydlibbyd.png" alt="Dra. Isabela Costa">
+                    <h4>Dra. Isabela Costa</h4>
+                    <p class="modal-time-area">Ginecologia</p>
+                </div>
+
+                <div class="modal-time-card">
+                    <img src="ASSETS/medica-ginecolista.jpg" alt="Dra. Clarissa Prado">
+                    <h4>Dra. Clarissa Prado</h4>
+                    <p class="modal-time-area">Ginecologia</p>
+                </div>
+            </div>
+
+            <div class="modal-time-group">
+                <h3>Pediatria</h3>
+
+                <div class="modal-time-card">
+                    <img src="ASSETS/medica-pediatra.png" alt="Dra. Carla Santos">
+                    <h4>Dra. Carla Santos</h4>
+                    <p class="modal-time-area">Pediatria</p>
+                </div>
+
+                <div class="modal-time-card">
+                    <img src="ASSETS/medica-pediatra.png" alt="Dr. Felipe Ramos">
+                    <h4>Dr. Felipe Ramos</h4>
+                    <p class="modal-time-area">Pediatria</p>
+                </div>
+            </div>
+
+            <div class="modal-time-group">
+                <h3>Dermatologia</h3>
+
+                <div class="modal-time-card">
+                    <img src="ASSETS/Gemini_Generated_Image_o17v3xo17v3xo17v.png" alt="Dra. Luciana Lina">
+                    <h4>Dra. Luciana Lima</h4>
+                    <p class="modal-time-area">Dermatologia</p>
+                </div>
+
+                <div class="modal-time-card">
+                    <img src="ASSETS/Gemini_Generated_Image_ip1orpip1orpip1o.png" alt="Dr. Beatriz Ramos">
+                    <h4>Dr. Beatriz Ramos</h4>
+                    <p class="modal-time-area">Dermatologia</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
     <script src="script.js"></script>
 </body>
 </html>

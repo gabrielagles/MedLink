@@ -115,8 +115,8 @@ header {
     margin-bottom: 20px;
     position: relative;
     padding-bottom: 25px; /* Aumentado o padding para dar espaço ao divisor */
-    width: 100%; /* Garante que o H2 ocupe todo o espaço */
-    text-align: center; /* Garante que o texto H2 esteja centrado */
+    width: 100%; 
+    text-align: center; 
 }
 
 .secao h2::after {
@@ -761,6 +761,214 @@ footer p {
   color: #000;
 }
 
+/* ===== MODAL TIME COMPLETO (ISOLADO) ===== */
+.modal-time-overlay {
+    display: none; 
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caixa interna */
+.modal-time-container {
+    background: #fff;
+    width: 95%;
+    max-width: 900px;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+}
+
+/* Botão fechar */
+.modal-time-close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #888;
+    transition: .2s;
+}
+
+.modal-time-close:hover {
+    color: #00bcd4;
+}
+
+/* Títulos */
+.modal-time-title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: #00bcd4;
+}
+
+.modal-time-subtitle {
+    margin-bottom: 25px;
+    color: #555;
+}
+
+/* Grid dos cards */
+.modal-time-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Cada card */
+.modal-time-card {
+    width: 200px;
+    background: #fafafa;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    padding: 15px;
+    transition: .3s;
+}
+
+.modal-time-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Imagem do especialista */
+.modal-time-img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    border: 3px solid #00bcd4;
+}
+
+/* Nome e especialidade */
+.modal-time-area {
+    color: #00bcd4;
+    font-weight: 600;
+    margin-top: 3px;
+}
+
+/* ================================
+   MODAL – LISTA DE ESPECIALISTAS
+=================================== */
+.modal-time {
+    display: none;                      /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);        /* Escurece o fundo */
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Conteúdo interno */
+.modal-time-content {
+    background: #fff;
+    width: 90%;
+    max-width: 850px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    animation: fadeIn 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Título */
+.modal-time-content h2 {
+    font-size: 1.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Botão de fechar */
+.modal-time-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: 0.2s;
+}
+
+.modal-time-close:hover {
+    color: #e60000;
+}
+
+/* ================================
+   GRUPOS POR ESPECIALIDADE
+=================================== */
+.modal-time-group {
+    margin-bottom: 35px;
+}
+
+.modal-time-group h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    border-left: 5px solid #00bcd4;
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+/* ================================
+   CARD DO MÉDICO
+=================================== */
+.modal-time-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.25s;
+    margin-bottom: 10px;
+}
+
+.modal-time-card:hover {
+    border-color: #00bcd4;
+    box-shadow: 0 0 10px rgba(0,0,0,0.07);
+}
+
+/* Selecionado */
+.medico-selecionado {
+    border-color: #00bcd4;
+    background: #e4faff;
+}
+
+/* Foto */
+.modal-time-card img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Nome e especialidade */
+.modal-time-card h4 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.modal-time-area {
+    font-size: 0.85rem;
+    color: #009bad;
+}
+
+
 @keyframes aparecer {
   from {
     opacity: 0;
@@ -771,6 +979,38 @@ footer p {
     transform: translateY(0);
   }
 }
+
+/* ===== BOTÕES DE ESPECIALIDADES ===== */
+.btn-especialidade {
+    background-color: #00bcd4;  /* Cor principal */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;       /* Deixa arredondado */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin: 5px;
+}
+
+.btn-especialidade:hover {
+    background-color: #00acc1;   /* Tom mais escuro ao passar o mouse */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transform: translateY(-2px); /* Leve efeito de "elevação" */
+}
+
+.btn-especialidade:active {
+    transform: translateY(1px);  /* Pressionado */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.btn-especialidade:focus {
+    outline: 2px solid #0097a7; /* Foco acessível */
+    outline-offset: 2px;
+}
+
 
 
 /* --- Media Queries (Responsividade) --- */
@@ -841,84 +1081,9 @@ footer p {
     .horarios {
         justify-content: center; 
     }
+    
 
-    /* ===== MODAL "TIME COMPLETO" ===== */
-.time-conteudo {
-    background-color: white;
-    padding: 40px;
-    border-radius: 15px;
-    text-align: center;
-    width: 90%;
-    max-width: 900px;
-    animation: fadeIn 0.3s ease;
-    }
-
-.time-conteudo h3 {
-    color: #00bcd4;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    }
-
-.time-conteudo p {
-    color: #555;
-    margin-bottom: 25px;
-        }
-
-.cards-especialistas-modal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    }
-
-.card-especialista-modal {
-    background-color: #f9f9f9;
-    border-radius: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 20px;
-    max-width: 220px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-.card-especialista-modal:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-.card-especialista-modal img {
-    width: 100%;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    }
-
-.card-especialista-modal h3 {
-    color: #333;
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    }
-
-.card-especialista-modal .especialidade {
-    color: #00bcd4;
-    font-weight: 600;
-    margin-bottom: 5px;
-    }
-
-.fechar-time {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #999;
-    transition: color 0.3s ease;
-    }
-
-.fechar-time:hover {
-    color: #00bcd4;
-    }
-
+   
 @keyframes fadeIn {
     from {opacity: 0; transform: translateY(-20px);}
     to {opacity: 1; transform: translateY(0);}
