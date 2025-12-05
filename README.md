@@ -30,14 +30,43 @@ O sistema permite que pacientes:
 
 ---
 
-### ✔ Sistema de Login
-- Login funcional com validação de credenciais:
-E-mail: admin@teste.com
+✔ Sistema de Login
+
+O sistema possui autenticação funcional com validação de credenciais específicas para cada médico.
+Cada médico, ao realizar login, tem acesso à sua própria lista de pacientes agendados.
+
+Credenciais dos Médicos
+🩺 Médico 1 — Dr. João Silva
+
+E-mail: medico1@teste.com
+
 Senha: 1234
 
-- Popup de retorno:
-- **Erro:** “E-mail ou senha incorretos”
-- **Sucesso:** “Logado com sucesso”
+Acesso: Lista personalizada de pacientes do Dr. João.
+
+🩺 Médico 2 — Dra. Isabela Costa
+
+E-mail: medico2@teste.com
+
+Senha: 9999
+
+Acesso: Pacientes específicos da especialidade da Dra. Isabela.
+
+🩺 Médico 3 — Dra. Carla Santos
+
+E-mail: medico3@teste.com
+
+Senha: 0000
+
+Acesso: Agenda exclusiva com seus próprios pacientes.
+
+Mensagens de retorno
+
+Erro:
+→ “E-mail ou senha incorretos”
+
+Sucesso:
+→ “Logado com sucesso!”
 
 ---
 
@@ -112,6 +141,7 @@ Aluno de Análise e Desenvolvimento de Sistemas
 Faculdade Presbiteriana Mackenzie
 
 ---
+
 
 
 
