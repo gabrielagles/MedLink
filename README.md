@@ -19,14 +19,62 @@ O sistema permite que pacientes:
 
 ### ✔ Sistema de Agendamento
 - Seleção da **especialidade**
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+
 - Listagem dinâmica dos médicos de acordo com a especialidade
+**Resultado**
+( ) Sucesso
+( ) Não executado
+( ) Falha 
+( X ) Cancelado
+ 
 - Seleção de médico
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+ 
 - Calendário funcional
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+  
 - Seleção de horário
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+  
 - Confirmação de agendamento
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+  
 - Armazenamento no `localStorage`
+**Resultado**
+( ) Sucesso
+( X ) Não executado (Guardado tudo no JS)
+( ) Falha 
+( ) Cancelado
+  
 - Exibição de mensagem:  
   **"Consulta agendada com sucesso"**
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+  
 
 ---
 
@@ -44,6 +92,13 @@ Senha: 1234
 
 Acesso: Lista personalizada de pacientes do Dr. João.
 
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+
+
 🩺 Médico 2 — Dra. Isabela Costa
 
 E-mail: medico2@teste.com
@@ -51,6 +106,12 @@ E-mail: medico2@teste.com
 Senha: 9999
 
 Acesso: Pacientes específicos da especialidade da Dra. Isabela.
+
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
 
 🩺 Médico 3 — Dra. Carla Santos
 
@@ -68,14 +129,42 @@ Erro:
 Sucesso:
 → “Logado com sucesso!”
 
+**Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+
 ---
 
 ### ✔ Lista de Especialistas
 - Exibição de todas as especialidades
-- Separação por categoria (Cardiologia, Ginecologia etc.)
-- Modal organizado por especialidade
-- Filtragem funcionando corretamente
+  **Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
 
+- Separação por categoria (Cardiologia, Ginecologia etc.)
+  **Resultado**
+( X ) Sucesso
+( ) Não executado
+( ) Falha 
+( ) Cancelado
+  
+- Modal organizado por especialidade
+  **Resultado**
+( ) Sucesso
+( ) Não executado
+( ) Falha 
+( X ) Cancelado
+  
+- Filtragem funcionando corretamente
+  **Resultado**
+( ) Sucesso
+( ) Não executado
+( ) Falha 
+( X ) Cancelado
 ---
 
 ## 🧩 Requisitos para Rodar o Projeto
@@ -141,6 +230,7 @@ Aluno de Análise e Desenvolvimento de Sistemas
 Faculdade Presbiteriana Mackenzie
 
 ---
+
 
 
 
