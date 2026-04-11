@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
             senha: "1234",
             nome:  "Dr. João Silva",
             pacientes: [
-                { nome: "Ana Lima",    data: "12/05/2025", hora: "09:00" },
-                { nome: "Bruno Costa", data: "13/05/2025", hora: "10:30" }
+                { nome: "Ana Lima",    data: "12/05/2026", hora: "09:00" },
+                { nome: "Bruno Costa", data: "13/05/2026", hora: "10:30" }
             ]
         },
         {
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             senha: "9999",
             nome:  "Dra. Isabela Costa",
             pacientes: [
-                { nome: "Carla Nunes",   data: "14/05/2025", hora: "08:00" },
-                { nome: "Diego Martins", data: "15/05/2025", hora: "11:00" }
+                { nome: "Carla Nunes",   data: "14/05/2026", hora: "08:00" },
+                { nome: "Diego Martins", data: "15/05/2026", hora: "11:00" }
             ]
         },
         {
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
             senha: "0000",
             nome:  "Dra. Carla Santos",
             pacientes: [
-                { nome: "Eduarda Reis", data: "16/05/2025", hora: "14:00" },
-                { nome: "Fábio Souza",  data: "17/05/2025", hora: "15:30" }
+                { nome: "Eduarda Reis", data: "16/05/2026", hora: "14:00" },
+                { nome: "Fábio Souza",  data: "17/05/2026", hora: "15:30" }
             ]
         }
     ];
