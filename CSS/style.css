@@ -1,85 +1,134 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* ============================================================
+   TOKENS
+============================================================ */
+:root {
+    --cyan:        #00bcd4;
+    --cyan-dark:   #0097a7;
+    --cyan-deeper: #006978;
+    --cyan-light:  #e0f7fa;
+    --cyan-pale:   #f0fdff;
+
+    --text:        #1a2332;
+    --text-mid:    #4a5568;
+    --text-soft:   #8492a6;
+    --border:      #e2e8f0;
+    --surface:     #ffffff;
+    --bg:          #f7fbfd;
+
+    --radius-sm:   8px;
+    --radius-md:   14px;
+    --radius-lg:   22px;
+    --radius-pill: 999px;
+
+    --shadow-sm:   0 2px 8px rgba(0,150,180,.08);
+    --shadow-md:   0 6px 24px rgba(0,150,180,.12);
+    --shadow-lg:   0 16px 48px rgba(0,150,180,.16);
+
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body:    'DM Sans', sans-serif;
+
+    --transition: .25s cubic-bezier(.4,0,.2,1);
 }
 
+/* ============================================================
+   RESET / BASE
+============================================================ */
+*, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
 header {
-    background-color: #00bcd4;
-    color: white;
-    padding: 15px 40px;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,188,212,.15);
+    padding: 0 48px;
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 0; width: 100%;
     z-index: 1000;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    height: 68px;
+    display: flex;
+    align-items: center;
 }
 
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
+    gap: 10px;
     text-decoration: none;
-    color: white;
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid var(--cyan-light);
 }
 
 .titulo-logo {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--cyan-dark);
+    letter-spacing: -.01em;
 }
 
 .navbar ul {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 4px;
+    align-items: center;
 }
 
 .navbar ul li a {
     text-decoration: none;
-    color: white;
+    color: var(--text-mid);
+    font-size: .9rem;
     font-weight: 500;
-    transition: color 0.3s;
+    padding: 7px 14px;
+    border-radius: var(--radius-pill);
+    transition: var(--transition);
 }
 
 .navbar ul li a:hover {
-    color: #e0f7fa;
+    color: var(--cyan-dark);
+    background: var(--cyan-light);
 }
 
 .botao-login {
-    padding: 8px 16px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
+    background: var(--cyan) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 8px 20px !important;
+    border-radius: var(--radius-pill) !important;
+    transition: var(--transition) !important;
 }
 
 .botao-login:hover {
-    background-color: white;
-    color: #00bcd4;
-}
-
-.botao-cadastro {
-    padding: 8px 16px;
-    color: #00bcd4;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
-
-.botao-cadastro:hover {
-    background-color: white;
-    color: #00bcd4;
+    background: var(--cyan-dark) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md) !important;
 }
 
 .menu-toggle {
@@ -90,1024 +139,1014 @@ header {
 }
 
 .menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: white;
+    width: 22px; height: 2px;
+    background: var(--text);
     border-radius: 2px;
+    transition: var(--transition);
 }
 
+/* ============================================================
+   SEÇÕES — BASE
+============================================================ */
 .secao {
-    padding: 80px 40px;
-    text-align: center;
-    min-height: 70vh;
+    padding: 100px 48px 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    min-height: 60vh;
     justify-content: center;
-    padding-top: 100px;
-    position: relative;
 }
 
-/* --- CORREÇÃO DE CENTRALIZAÇÃO PARA TODOS OS TÍTULOS DE SEÇÃO --- */
 .secao h2 {
-    font-size: 2.5rem;
-    color: #00acc1;
-    margin-bottom: 20px;
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    color: var(--text);
+    margin-bottom: 14px;
     position: relative;
-    padding-bottom: 25px; /* Aumentado o padding para dar espaço ao divisor */
-    width: 100%; 
-    text-align: center; 
+    padding-bottom: 24px;
+    letter-spacing: -.02em;
+    line-height: 1.2;
 }
 
 .secao h2::after {
     content: '';
     position: absolute;
-    left: 50%;
+    bottom: 0; left: 50%;
     transform: translateX(-50%);
-    bottom: 0;
-    width: 60px;
-    height: 4px;
-    background-color: #00bcd4;
-    border-radius: 2px;
-}
-/* ----------------------------------------------------------------- */
-
-.secao p {
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    color: #444;
-}
-
-/* --- Estilização da Seção Inicial (.inicio) --- */
-.inicio {
-    background: linear-gradient(135deg, #00bcd4, #00acc1);
-    color: white;
-    padding-bottom: 80px;
-}
-
-/* Novo estilo para o título principal da seção 'inicio' */
-.inicio h2 {
-    font-size: 3.5rem;
-    color: white;
-    margin-bottom: 15px;
-    position: relative;
-    padding-bottom: 25px;
-    /* Mantém as regras de centralização herdadas de .secao h2 */
-}
-
-/* Novo divisor centralizado e fino */
-.inicio h2::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    width: 80px; /* Mais largo */
-    height: 3px; /* Mais fino */
-    background-color: white;
+    width: 40px; height: 3px;
+    background: var(--cyan);
     border-radius: 2px;
 }
 
-.inicio p {
-    font-size: 1.3rem;
-    color: #e0f7fa;
+.secao > p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    max-width: 620px;
+    line-height: 1.75;
     margin-bottom: 40px;
 }
 
-.inicio button {
-    background-color: white;
-    color: #00bcd4;
+/* ============================================================
+   SEÇÃO — INÍCIO (HERO)
+============================================================ */
+.inicio {
+    background: linear-gradient(150deg, #006978 0%, #00acc1 45%, #26c6da 100%);
+    color: white;
+    min-height: 100vh;
+    padding-top: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decoração de fundo */
+.inicio::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: rgba(255,255,255,.05);
+    border-radius: 50%;
+    top: -200px; right: -150px;
+    pointer-events: none;
+}
+
+.inicio::after {
+    content: '';
+    position: absolute;
+    width: 350px; height: 350px;
+    background: rgba(255,255,255,.04);
+    border-radius: 50%;
+    bottom: -80px; left: -80px;
+    pointer-events: none;
+}
+
+.inicio .conteudo {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+}
+
+.inicio h2 {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: white;
+    letter-spacing: -.03em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    padding-bottom: 28px;
+}
+
+.inicio h2::after {
+    background: rgba(255,255,255,.5);
+    width: 60px; height: 3px;
+}
+
+.inicio p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,.85);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+}
+
+.inicio button,
+.botao-agendar {
+    background: white;
+    color: var(--cyan-dark);
     border: none;
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    padding: 15px 36px;
+    font-family: var(--font-body);
+    font-size: 1rem;
     font-weight: 600;
-    border-radius: 30px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    letter-spacing: .01em;
 }
 
-.inicio button:hover {
-    background-color: #e0f7fa;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+.inicio button:hover,
+.botao-agendar:hover {
+    background: var(--cyan-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,.25);
 }
 
-/* --- Estilização da Seção Visão (.visao) --- (NOVO BLOCO) */
-/* --- Unificação do estilo dos cards de Visão e Cuidado --- */
-.cards-visao,
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-    max-width: 1100px;
-    padding: 0 20px;
-}
-
-.card-vision,
-.card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: none;
-    flex: 1 1 300px;
-    max-width: 350px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    border: none;
-}
-
-.card-vision:hover,
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-}
-
-.card-vision i,
-.card i {
-    font-size: 2.5rem;
-    color: #00bcd4;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.card-vision h3,
-.card h3 {
-    color: #333;
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.card-vision p,
-.card p {
-    color: #666;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 0 auto;
-    max-width: 300px;
-}
-
-
-
-/* --- Estilização das Seções de Conteúdo (Serviços, Tecnologia, Especialistas, Contato, Footer) --- */
-
+/* ============================================================
+   SEÇÃO — SOBRE
+============================================================ */
 .sobre {
-    background-color: #f8f8f8;
+    background: var(--surface);
 }
 
+/* ============================================================
+   SEÇÃO — SERVIÇOS
+============================================================ */
 .servicos {
-    background-color: white;
+    background: var(--bg);
 }
 
+.cards,
 .servicos .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    max-width: 1200px;
+    gap: 24px;
+    margin-top: 40px;
+    max-width: 1100px;
+    width: 100%;
 }
 
+.card,
 .servicos .card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    flex: 1 1 300px;
-    max-width: 350px;
+    background: var(--surface);
+    padding: 32px 28px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    flex: 1 1 280px;
+    max-width: 340px;
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 5px solid #00bcd4;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
 }
 
+.card::before,
+.servicos .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cyan), var(--cyan-dark));
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.card:hover,
 .servicos .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0,188,212,.2);
 }
 
+.card h3,
 .servicos .card h3 {
-    color: #00bcd4;
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-family: var(--font-display);
+    color: var(--text);
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    font-weight: 400;
 }
 
+.card p,
 .servicos .card p {
-    color: #666;
-    margin-bottom: 0;
-    font-size: 1rem;
+    color: var(--text-mid);
+    font-size: .95rem;
+    line-height: 1.7;
+    margin: 0;
 }
 
-.tecnologia {
-    background-color: #f0faff;
-}
-
-.cards-tecnologia {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    max-width: 1200px;
-}
-
-.card-tech {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    flex: 1 1 300px;
-    max-width: 350px;
-    text-align: left;
-    transition: transform 0.3s ease;
-    border-left: 5px solid #00bcd4;
-}
-
-.card-tech h3 {
-    color: #00acc1;
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.card-tech p {
-    color: #666;
-    margin-bottom: 0;
-    font-size: 1rem;
-}
-
+/* ============================================================
+   SEÇÃO — ESPECIALISTAS
+============================================================ */
 .especialistas {
-    background-color: #f8f8f8;
+    background: var(--surface);
 }
 
 .cards-especialistas {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    margin-bottom: 40px;
-    max-width: 1200px;
+    gap: 24px;
+    margin-top: 40px;
+    margin-bottom: 36px;
+    max-width: 1100px;
+    width: 100%;
 }
 
 .card-especialista {
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    flex: 1 1 300px;
-    max-width: 300px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+    flex: 1 1 220px;
+    max-width: 260px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #eee;
+    transition: var(--transition);
 }
 
 .card-especialista:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0,188,212,.3);
 }
 
 .card-especialista img {
-    width: 100px;
-    height: 100px;
+    width: 90px; height: 90px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
-    border: 4px solid #00bcd4;
-    box-shadow: 0 0 0 5px rgba(0, 188, 212, 0.1);
+    border: 3px solid var(--cyan-light);
+    margin-bottom: 14px;
+    transition: var(--transition);
+}
+
+.card-especialista:hover img {
+    border-color: var(--cyan);
 }
 
 .card-especialista h3 {
-    color: #333;
-    margin-bottom: 5px;
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-family: var(--font-display);
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 4px;
 }
 
 .card-especialista .especialidade {
-    color: #00bcd4;
-    font-weight: 500;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+    color: var(--cyan-dark);
+    font-size: .85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 6px;
+    display: block;
 }
 
 .card-especialista .crm {
+    color: var(--text-soft);
+    font-size: .8rem;
     display: block;
-    color: #999;
-    font-size: 0.9rem;
 }
 
 .botao-ver-mais {
-    background-color: #00acc1;
+    background: var(--cyan);
     color: white;
     border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 25px;
+    padding: 12px 28px;
+    font-family: var(--font-body);
+    font-size: .9rem;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    letter-spacing: .02em;
 }
 
 .botao-ver-mais:hover {
-    background-color: #00bcd4;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background: var(--cyan-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
+/* ============================================================
+   SEÇÃO — CONTATO
+============================================================ */
 .contato {
-    background-color: #f0faff;
+    background: var(--bg);
 }
 
 .contato form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
     width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 480px;
+    margin-top: 32px;
+    background: var(--surface);
+    padding: 36px 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
-.contato input[type="text"],
-.contato input[type="email"],
+.contato input,
 .contato textarea {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: .95rem;
+    color: var(--text);
+    background: var(--bg);
+    transition: var(--transition);
+    outline: none;
 }
 
 .contato input:focus,
 .contato textarea:focus {
-    border-color: #00bcd4;
-    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
-    outline: none;
+    border-color: var(--cyan);
+    background: var(--surface);
+    box-shadow: 0 0 0 3px rgba(0,188,212,.12);
 }
 
 .contato textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 110px;
 }
 
 .contato button[type="submit"] {
-    background-color: #00bcd4;
+    background: var(--cyan);
     color: white;
     border: none;
-    padding: 15px 25px;
-    font-size: 1.1rem;
+    padding: 13px;
+    font-family: var(--font-body);
+    font-size: 1rem;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
 }
 
 .contato button[type="submit"]:hover {
-    background-color: #00acc1;
+    background: var(--cyan-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
+/* ============================================================
+   FOOTER
+============================================================ */
 footer {
-    background-color: #00acc1; 
-    color: white;
+    background: var(--cyan-deeper);
+    color: rgba(255,255,255,.8);
     text-align: center;
-    padding: 20px 40px;
-    font-size: 0.9rem;
-    border-top: 3px solid #00bcd4;
+    padding: 24px 48px;
+    font-size: .85rem;
+    letter-spacing: .02em;
 }
 
-footer p {
-    margin: 0;
-}
-
-
-/* --- ESTILIZAÇÃO DO MODAL DE AGENDAMENTO (AJUSTES PARA MELHOR VISUAL) --- */
+/* ============================================================
+   MODAL — BASE
+============================================================ */
 .modal {
-    display: none; 
-    position: fixed; 
+    display: none;
+    position: fixed;
+    inset: 0;
     z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
+    background: rgba(10,20,30,.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
 }
 
-.modal-conteudo {
-    background-color: white;
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    width: 90%; 
-    max-width: 450px;
+/* ============================================================
+   MODAL — LOGIN
+============================================================ */
+#login-modal {
+    display: none;
+}
+
+.modal-content {
+    background: var(--surface);
+    padding: 44px 36px;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 400px;
     position: relative;
-    animation: fadeIn 0.3s;
+    animation: modalIn .3s cubic-bezier(.4,0,.2,1);
+    border: 1px solid rgba(0,188,212,.15);
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    color: var(--text);
+    margin-bottom: 28px;
+    font-weight: 400;
+    letter-spacing: -.02em;
+}
+
+.form-login .campo {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-login label {
+    display: block;
+    font-size: .82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+}
+
+.form-login input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: .95rem;
+    color: var(--text);
+    background: var(--bg);
+    transition: var(--transition);
+    outline: none;
+}
+
+.form-login input:focus {
+    border-color: var(--cyan);
+    background: var(--surface);
+    box-shadow: 0 0 0 3px rgba(0,188,212,.12);
+}
+
+.form-login button[type="submit"] {
+    width: 100%;
+    padding: 13px;
+    background: var(--cyan);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 6px;
+    letter-spacing: .02em;
+}
+
+.form-login button[type="submit"]:hover {
+    background: var(--cyan-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.cadastro-link {
+    margin-top: 18px;
+    font-size: .85rem;
+    color: var(--text-soft);
+    text-align: center;
+}
+
+.cadastro-link a {
+    color: var(--cyan-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cadastro-link a:hover { text-decoration: underline; }
+
+.fechar,
+.modal-time-close {
+    position: absolute;
+    top: 14px; right: 18px;
+    font-size: 1.4rem;
+    color: var(--text-soft);
+    cursor: pointer;
+    transition: var(--transition);
+    line-height: 1;
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.fechar:hover,
+.modal-time-close:hover {
+    color: var(--text);
+    background: var(--border);
+}
+
+/* ============================================================
+   MODAL — MÉDICOS / ESPECIALISTAS
+============================================================ */
+#modal-medicos,
+#modal-time,
+.modal-time {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,20,30,.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-time-content {
+    background: var(--surface);
+    width: 92%;
+    max-width: 860px;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 36px 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0,188,212,.15);
+    box-shadow: var(--shadow-lg);
+    animation: modalIn .3s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--cyan-light) transparent;
+}
+
+.modal-time-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text);
+    font-weight: 400;
+    margin-bottom: 28px;
+    text-align: center;
+    letter-spacing: -.02em;
+}
+
+.modal-time-group {
+    margin-bottom: 32px;
+}
+
+.modal-time-group h3 {
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--cyan-dark);
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 3px solid var(--cyan);
+}
+
+/* Grid de cards de médico */
+.modal-time-grid,
+.lista-medicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.modal-time-card,
+.medico-card-selecao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.modal-time-card:hover,
+.medico-card-selecao:hover {
+    border-color: var(--cyan);
+    background: var(--cyan-pale);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.medico-selecionado {
+    border-color: var(--cyan) !important;
+    background: var(--cyan-light) !important;
+}
+
+.modal-time-card img,
+.medico-card-selecao img {
+    width: 76px; height: 76px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid var(--cyan-light);
+    transition: var(--transition);
+}
+
+.modal-time-card:hover img,
+.medico-card-selecao:hover img {
+    border-color: var(--cyan);
+}
+
+.modal-time-card h4,
+.medico-card-selecao h4 {
+    font-size: .92rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.modal-time-area {
+    font-size: .78rem;
+    color: var(--cyan-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+/* ============================================================
+   MODAL — ESPECIALIDADES
+============================================================ */
+#modal-especialidades .modal-conteudo,
+#modal-especialidades .modal-content {
+    max-width: 540px;
+    text-align: center;
+}
+
+.btn-especialidade {
+    background: var(--surface);
+    color: var(--cyan-dark);
+    border: 1.5px solid rgba(0,188,212,.35);
+    padding: 11px 22px;
+    font-family: var(--font-body);
+    font-size: .9rem;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition);
+    margin: 5px;
+    letter-spacing: .01em;
+}
+
+.btn-especialidade:hover {
+    background: var(--cyan);
+    color: white;
+    border-color: var(--cyan);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-especialidade:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   MODAL — AGENDAMENTO
+============================================================ */
+#agendamento-modal .modal-conteudo,
+.modal-conteudo {
+    background: var(--surface);
+    margin: auto;
+    padding: 36px 32px;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 460px;
+    position: relative;
+    animation: modalIn .3s cubic-bezier(.4,0,.2,1);
+    border: 1px solid rgba(0,188,212,.15);
+    box-shadow: var(--shadow-lg);
 }
 
 .modal h3 {
-    color: #00acc1;
-    margin-bottom: 5px;
+    font-family: var(--font-display);
+    color: var(--text);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 4px;
 }
 
 .modal-subtitulo {
-    color: #666;
+    color: var(--text-soft);
+    font-size: .88rem;
+    margin-bottom: 24px;
+}
+
+/* Calendário */
+.calendario-simulado {
     margin-bottom: 20px;
 }
 
-/* Estilização do Calendário Simulado */
-.calendario-simulado {
-    padding: 10px 0;
-    border: none;
-    margin-bottom: 10px;
-}
-
-/* NAVEGAÇÃO DE MÊS (AJUSTADA) */
 .navegacao-mes {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    padding: 0 10px;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 0 4px;
 }
 
-.mes-ano {
-    font-size: 1.5rem;
+.mes-ano,
+#mes-ano-display {
+    font-size: 1rem;
     font-weight: 600;
-    color: #00bcd4;
-    text-align: center;
-    flex-grow: 1; 
+    color: var(--cyan-dark);
+    letter-spacing: -.01em;
 }
 
 .seta-mes {
     cursor: pointer;
-    font-size: 1.2rem;
-    color: #00acc1;
-    padding: 5px 10px;
-    border-radius: 50%;
-    transition: background-color 0.2s;
+    color: var(--cyan-dark);
+    padding: 5px 9px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    font-size: .9rem;
+    transition: var(--transition);
+    user-select: none;
 }
 
 .seta-mes:hover {
-    background-color: #e0f7fa;
+    background: var(--cyan-light);
+    border-color: var(--cyan);
 }
-
 
 .dias-semana {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7,1fr);
     text-align: center;
-    font-weight: 500;
-    color: #666; 
-    margin-bottom: 5px;
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--text-soft);
+    margin-bottom: 8px;
 }
 
 .dias-mes {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
+    grid-template-columns: repeat(7,1fr);
+    gap: 2px;
 }
 
-/* Estilo Básico para o Dia */
 .dias-mes span.dia {
-    padding: 10px 5px;
-    border-radius: 50%;
-    transition: background-color 0.2s, color 0.2s;
-    font-weight: 400;
+    padding: 8px 4px;
+    border-radius: var(--radius-sm);
+    font-size: .88rem;
+    transition: var(--transition);
+    text-align: center;
 }
 
 .dia-disponivel {
     cursor: pointer;
-    color: #333;
+    color: var(--text);
+    font-weight: 500;
 }
 
 .dia-disponivel:hover {
-    background-color: #e0f7fa;
+    background: var(--cyan-light);
+    color: var(--cyan-dark);
 }
 
-/* CLASSE DE SELEÇÃO DE DIA */
 .dia-selecionado {
-    background-color: #00bcd4 !important;
+    background: var(--cyan) !important;
     color: white !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-sm) !important;
 }
 
+.dia-desabilitado,
 .dia-inativo {
-    color: #ccc;
+    color: var(--border);
     cursor: default;
 }
 
-
-/* Estilização dos Horários */
+/* Horários */
 .horarios-disponiveis {
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-    margin-top: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 16px;
 }
 
 .horarios-disponiveis h4 {
-    color: #333;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-    text-align: left;
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-soft);
+    margin-bottom: 12px;
 }
 
 .horarios {
     display: flex;
-    gap: 12px;
-    justify-content: flex-start;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    gap: 8px;
+    margin-bottom: 24px;
 }
 
 .horarios button {
-    background-color: white;
-    color: #00bcd4;
-    border: 2px solid #00bcd4;
-    padding: 10px 18px; 
-    border-radius: 8px;
+    background: var(--bg);
+    color: var(--cyan-dark);
+    border: 1.5px solid rgba(0,188,212,.3);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: all 0.2s;
+    font-family: var(--font-body);
+    font-size: .88rem;
     font-weight: 600;
+    transition: var(--transition);
 }
 
 .horarios button:hover {
-    background-color: #e0f7fa;
+    background: var(--cyan-light);
+    border-color: var(--cyan);
 }
 
-/* CLASSE DE SELEÇÃO DE HORÁRIO (Cor principal da marca) */
 .hora-selecionada {
-    background-color: #00bcd4 !important;
+    background: var(--cyan) !important;
     color: white !important;
-    border-color: #00bcd4 !important;
+    border-color: var(--cyan) !important;
 }
 
-.botao-confirmar-agendamento {
+.botao-confirmar-agendamento,
+.botao-confirmarpais {
     width: 100%;
-    background-color: #00bcd4;
+    background: var(--cyan);
     color: white;
     border: none;
-    padding: 15px; 
-    font-size: 1.1rem;
+    padding: 14px;
+    font-family: var(--font-body);
+    font-size: 1rem;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
+    letter-spacing: .02em;
 }
 
-.botao-confirmar-agendamento:hover {
-    background-color: #00acc1;
+.botao-confirmar-agendamento:hover,
+.botao-confirmarpais:hover {
+    background: var(--cyan-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
-/* ===== MODAL DE LOGIN ===== */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
+/* Info do médico selecionado no agendamento */
+.info-especialista-selecionado {
+    background: var(--cyan-pale);
+    border-left: 3px solid var(--cyan);
+    padding: 12px 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.modal-content {
-  background-color: #fff;
-  padding: 40px 30px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-  position: relative;
-  animation: aparecer 0.3s ease;
+.info-especialista-selecionado h4 {
+    color: var(--cyan-deeper);
+    font-size: .88rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
 }
 
-.modal-content h2 {
-  margin-bottom: 20px;
-  color: #333;
+.info-especialista-selecionado p {
+    font-size: .92rem;
+    color: var(--text-mid);
 }
 
-.form-login .campo {
-  text-align: left;
-  margin-bottom: 15px;
-}
-
-.form-login label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-  font-weight: 500;
-}
-
-.form-login input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.form-login button {
-  width: 100%;
-  padding: 12px;
-  background-color: #00bcd4;
-  color: white;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.form-login button:hover {
-  background-color: #0097a7;
-}
-
-.cadastro-link {
-  margin-top: 15px;
-  font-size: 0.9rem;
-}
-
-.cadastro-link a {
-  color: #00bcd4;
-  text-decoration: none;
-}
-
-.cadastro-link a:hover {
-  text-decoration: underline;
-}
-
-.fechar {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  font-size: 1.5rem;
-  color: #666;
-  cursor: pointer;
-}
-
-.fechar:hover {
-  color: #000;
-}
-
-/* ===== MODAL TIME COMPLETO (ISOLADO) ===== */
-.modal-time-overlay {
-    display: none; 
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(3px);
-    z-index: 5000;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Caixa interna */
-.modal-time-container {
-    background: #fff;
-    width: 95%;
-    max-width: 900px;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    position: relative;
-}
-
-/* Botão fechar */
-.modal-time-close {
-    position: absolute;
-    right: 18px;
-    top: 12px;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #888;
-    transition: .2s;
-}
-
-.modal-time-close:hover {
-    color: #00bcd4;
-}
-
-/* Títulos */
-.modal-time-title {
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-    color: #00bcd4;
-}
-
-.modal-time-subtitle {
-    margin-bottom: 25px;
-    color: #555;
-}
-
-/* Grid dos cards */
-.modal-time-cards {
+/* ============================================================
+   CARDS VISÃO / TECNOLOGIA
+============================================================ */
+.cards-visao,
+.cards-tecnologia {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
-}
-
-/* Cada card */
-.modal-time-card {
-    width: 200px;
-    background: #fafafa;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    padding: 15px;
-    transition: .3s;
-}
-
-.modal-time-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-}
-
-/* Imagem do especialista */
-.modal-time-img {
-    width: 110px;
-    height: 110px;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 12px;
-    border-radius: 50%;
-    border: 3px solid #00bcd4;
-}
-
-/* Nome e especialidade */
-.modal-time-area {
-    color: #00bcd4;
-    font-weight: 600;
-    margin-top: 3px;
-}
-
-/* ================================
-   MODAL – LISTA DE ESPECIALISTAS
-=================================== */
-.modal-time {
-    display: none;                      /* Oculto por padrão */
-    position: fixed;
-    top: 0;
-    left: 0;
+    gap: 24px;
+    margin-top: 40px;
+    max-width: 1100px;
     width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);        /* Escurece o fundo */
-    backdrop-filter: blur(3px);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
 }
 
-/* Conteúdo interno */
-.modal-time-content {
-    background: #fff;
-    width: 90%;
-    max-width: 850px;
-    max-height: 85vh;
-    overflow-y: auto;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15);
-    animation: fadeIn 0.3s ease-in-out;
-    position: relative;
+.card-vision,
+.card-tech {
+    background: var(--surface);
+    padding: 28px 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    flex: 1 1 260px;
+    max-width: 320px;
+    text-align: left;
+    transition: var(--transition);
 }
 
-/* Título */
-.modal-time-content h2 {
-    font-size: 1.9rem;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 600;
+.card-vision:hover,
+.card-tech:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0,188,212,.2);
 }
 
-/* Botão de fechar */
-.modal-time-close {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
-    transition: 0.2s;
-}
-
-.modal-time-close:hover {
-    color: #e60000;
-}
-
-/* ================================
-   GRUPOS POR ESPECIALIDADE
-=================================== */
-.modal-time-group {
-    margin-bottom: 35px;
-}
-
-.modal-time-group h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    border-left: 5px solid #00bcd4;
-    padding-left: 10px;
-    font-weight: 600;
-}
-
-/* ================================
-   CARD DO MÉDICO
-=================================== */
-.modal-time-card {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: #fafafa;
-    border-radius: 10px;
-    padding: 12px 16px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: 0.25s;
+.card-vision h3,
+.card-tech h3 {
+    font-family: var(--font-display);
+    color: var(--text);
+    font-size: 1.15rem;
+    font-weight: 400;
     margin-bottom: 10px;
 }
 
-.modal-time-card:hover {
-    border-color: #00bcd4;
-    box-shadow: 0 0 10px rgba(0,0,0,0.07);
-}
-
-/* Selecionado */
-.medico-selecionado {
-    border-color: #00bcd4;
-    background: #e4faff;
-}
-
-/* Foto */
-.modal-time-card img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* Nome e especialidade */
-.modal-time-card h4 {
-    font-size: 1rem;
+.card-vision p,
+.card-tech p {
+    color: var(--text-mid);
+    font-size: .93rem;
+    line-height: 1.7;
     margin: 0;
-    font-weight: 600;
 }
 
-.modal-time-area {
-    font-size: 0.85rem;
-    color: #009bad;
+/* ============================================================
+   ANIMAÇÕES
+============================================================ */
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(14px) scale(.98); }
+    to   { opacity: 1; transform: translateY(0)   scale(1);    }
 }
 
-
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== BOTÕES DE ESPECIALIDADES ===== */
-.btn-especialidade {
-    background-color: #00bcd4;  /* Cor principal */
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 25px;       /* Deixa arredondado */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    margin: 5px;
-}
-
-.btn-especialidade:hover {
-    background-color: #00acc1;   /* Tom mais escuro ao passar o mouse */
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    transform: translateY(-2px); /* Leve efeito de "elevação" */
-}
-
-.btn-especialidade:active {
-    transform: translateY(1px);  /* Pressionado */
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
-
-.btn-especialidade:focus {
-    outline: 2px solid #0097a7; /* Foco acessível */
-    outline-offset: 2px;
-}
-
-
-
-/* --- Media Queries (Responsividade) --- */
+/* ============================================================
+   RESPONSIVO
+============================================================ */
 @media (max-width: 900px) {
+    header { padding: 0 24px; }
+
     .navbar ul {
         display: none;
         flex-direction: column;
-        background-color: #00acc1;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
         position: absolute;
-        top: 80px;
-        right: 40px;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        top: 72px; right: 24px;
+        padding: 16px;
+        border-radius: var(--radius-md);
+        min-width: 200px;
+        z-index: 999;
     }
 
-    .navbar.active ul {
-        display: flex;
-    }
+    .navbar.active ul { display: flex; }
 
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .navbar ul li .botao-login,
-    .navbar ul li .botao-cadastro {
-        background-color: white;
-        color: #00acc1;
-        margin-top: 5px;
-        text-align: center;
-        padding: 8px 16px;
-        border-radius: 8px;
+    .menu-toggle { display: flex; }
+
+    .navbar ul li a {
+        color: var(--text);
+        padding: 10px 14px;
+        display: block;
+        border-radius: var(--radius-sm);
     }
 }
 
 @media (max-width: 768px) {
-    .secao {
-        padding: 60px 20px;
-    }
+    .secao { padding: 80px 24px 60px; }
 
-    .secao h2 {
-        font-size: 2rem;
-    }
+    .inicio h2 { font-size: 2.6rem; }
+    .secao h2  { font-size: 2rem; }
 
-    .inicio h2 {
-        font-size: 2.5rem;
-    }
-
-    .inicio p {
-        font-size: 1.1rem;
-    }
-    
+    .cards,
     .servicos .cards,
     .cards-tecnologia,
     .cards-especialistas,
-    .cards-visao{
+    .cards-visao {
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
     }
 
+    .card,
     .servicos .card,
     .card-tech,
     .card-especialista,
     .card-vision {
         max-width: 100%;
     }
-    
-    .horarios {
-        justify-content: center; 
+
+    .horarios { justify-content: center; }
+
+    .modal-time-content { padding: 24px 18px; }
+
+    .modal-time-grid,
+    .lista-medicos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
-    
-
-   
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity: 1; transform: translateY(0);}
-    }
-
-
-    .info-especialista-selecionado {
-    background-color: #e0f7fa;
-    border-left: 5px solid #00bcd4;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.info-especialista-selecionado h4 {
-    color: #007c91;
-    margin-bottom: 5px;
-    font-size: 1rem;
-}
-
-.info-especialista-selecionado p {
-    font-size: 0.95rem;
-    color: #333;
-}
-
 }
