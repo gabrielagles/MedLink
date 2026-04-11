@@ -51,7 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     if (btnLogin && modalLogin) {
-        btnLogin.addEventListener("click", () => modalLogin.style.display = "flex");
+        btnLogin.addEventListener("click", e => {
+            e.preventDefault();
+            modalLogin.style.display = "flex";
+        });
     }
     if (fecharLogin && modalLogin) {
         fecharLogin.addEventListener("click", () => modalLogin.style.display = "none");
